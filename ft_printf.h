@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/02 17:19:48 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/03/02 18:51:18 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,10 @@
 # include <stdarg.h> /* va_list, va_start, va_arg, va_end */
 # include <stdio.h>
 
-
-# ifndef MAX_BUFFER
-#  define MAX_BUFFER 1048
-# endif
-
-# define ERROR -1
-
-typedef enum 		type_f;
+//typedef enum 		type_f;
 enum				type_f
 {
-	d, I, x, X, u, f, e, E, s, S, p, n
+	d, i, x, X, u, f, e, E, s, S, p, n
 }type_f;
 
 typedef enum 		format;
@@ -55,7 +48,6 @@ typedef int (*ft_treat)(const char *literal, ...);
 */
 typedef	struct		s_var
 {
-	char	buf[MAX_BUFFER];
 	char	*tmp;
 	int		i;
 	size_t	len;
