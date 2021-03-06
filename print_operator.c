@@ -1,48 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utilities.c                                     :+:      :+:    :+:   */
+/*   print_operator.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvaldeta <mvaldeta@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/02 17:20:24 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/06 11:54:32 by mvaldeta         ###   ########.fr       */
+/*   Created: 2021/03/06 10:52:32 by mvaldeta          #+#    #+#             */
+/*   Updated: 2021/03/06 15:38:22 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_putchar(char c)
+/* void print_str(t_type type)
 {
-	write(1, &c, 1);
-}
-
-void ft_putc(char c)
-{
-	write(1, &c, 1);
-}
-
-void ft_putstr(char *str)
-{
-	int i;
-
-	i = 0;
-	while ((str[i]) != '\0')
-	{
-		ft_putc(str[i]);
-		++i;
-	}
-}
-
-int ft_strlen(char *str)
-{
-	int x;
-
-	x = 0;
-	while (str[x] != '\0')
-	{
-		++x;
-	}
-	debug_number(x, "X");
-	return (x);
-}
+    t_type t_char;
+    ft_putstr(t_char.str);
+} */

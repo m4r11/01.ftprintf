@@ -6,7 +6,7 @@
 /*   By: mvaldeta <mvaldeta@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/05 18:30:29 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/03/06 17:15:55 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 #include <stdlib.h>
 #include <stdarg.h> /* va_list, va_start, va_arg, va_end */
 #include <stdio.h>
+#include <limits.h>
+#include <stdbool.h>
+
+#define ARG(t_type) va_arg(args2, t_type)
 
 /*
 ** enums for modularity: flags, format & size
@@ -30,7 +34,7 @@
 
 typedef enum type_f
 {
-	d,
+	d, // int
 	i,
 	x,
 	X,
@@ -75,30 +79,36 @@ typedef struct s_struct
 } t_struct;
 
 /*
-** struct for binding enums to fpointers: get_converter. 
+**  argument type for function * 
 */
 
-typedef void (*fptr)(char *s);
-
-typedef struct s_converter
+typedef struct s_type
 {
-	char flag;
-	void (*fptr)(char *s);
-} t_converter;
+	int nbr;
+	void *kind;
+	char *str;
+} t_type;
+
+/*
+**  function * type def
+*/
+
+typedef void (*fptr)(t_type type, va_list args2);
 
 /*
 ** func's_declared 
 */
 
-void conv_itoa(char *format);
-void conv_xtoa(char *format);
-void conv_uitoa(char *format);
-void conv_ftoa(char *format);
-void conv_fetoa(char *format);
-void conv_dtoa(char *format);
-void conv_fetoa(char *format);
-void ft_putstr(char *str);
-void ft_putstr(char *str);
+void conv_itoa(t_type type, va_list args2);
+void conv_xtoa(t_type type, va_list args2);
+void conv_uitoa(t_type type, va_list args2);
+void conv_ftoa(t_type type, va_list args2);
+void conv_fetoa(t_type tyep, va_list args2);
+void conv_fetoa(t_type type, va_list args2);
+void conv_dtoa(t_type type, va_list args2);
+void conv_fetoa(t_type type, va_list args2);
+void print_str(t_type type, va_list args2);
+void print_str(t_type type, va_list args2);
 
 /*
 ** ft_utilities.c
@@ -109,9 +119,20 @@ void ft_putstr(char *str);
 int ft_strlen(char *str);
 
 /*
+** conv_numbers
+*/
+
+void ft_putnbr(int nb);
+char *ft_itoa(int n);
+bool is_base_valid(char *str);
+void ft_putnbr_base_recursiva(int number, char *base, int baseleng);
+void ft_putnbr_base(int nbr, char *base);
+
+/*
 ** ft_printf.c
 */
 int ft_printf(char *format, ...);
+
 /*
 ** debugs
 */
