@@ -6,7 +6,7 @@
 /*   By: mvaldeta <mvaldeta@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 17:20:24 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/07 23:04:50 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/03/08 22:16:42 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int ft_toupper(int c)
 	return (c);
 }
 
-size_t ft_intlen_bonus(int n)
+/* size_t ft_intlen_bonus(int n)
 {
 	size_t len;
 
@@ -71,7 +71,7 @@ size_t ft_intlen_bonus(int n)
 	}
 	debug_number(len, "len");
 	return (len);
-}
+} */
 
 int ft_recursive_power(int nb, int power)
 {
@@ -87,4 +87,21 @@ int ft_recursive_power(int nb, int power)
 		result = nb * ft_recursive_power(nb, power - 1);
 	}
 	return (result);
+}
+
+char *ft_strdup(const char *s1)
+{
+	char *s2;
+	size_t i;
+
+	i = 0;
+	while (s1[i])
+		i++;
+	if (!(s2 = (char *)malloc(sizeof(char) * (i + 1))))
+		return (NULL);
+	i = -1;
+	while (s1[++i])
+		s2[i] = s1[i];
+	s2[i] = '\0';
+	return (s2);
 }

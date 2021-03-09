@@ -6,7 +6,7 @@
 /*   By: mvaldeta <mvaldeta@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 09:22:56 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/07 23:10:12 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/03/08 22:25:49 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,13 +115,17 @@ void conv_fetoa(t_type type, va_list args2)
     ft_putnbr(decipart);
     ft_putstr("e+");
 }
-void conv_dtoa(t_type type, va_list args2)
-{
-    ft_putstr("dtoa");
-}
+
 void print_str(t_type type, va_list args2)
 {
     char *print;
     print = va_arg(args2, char *);
     ft_putstr(print);
+}
+
+void print_c(t_type type, va_list args2)
+{
+    char print;
+    print = va_arg(args2, int);
+    ft_putc(print);
 }

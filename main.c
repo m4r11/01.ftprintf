@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <mvaldeta@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:40:48 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/02/25 15:43:32 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/03/08 21:14:32 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 int main()
 {
 
-    return(0);
+    return (0);
 }

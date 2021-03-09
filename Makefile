@@ -6,7 +6,7 @@
 #    By: mvaldeta <mvaldeta@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/27 16:16:23 by mvaldeta          #+#    #+#              #
-#    Updated: 2021/03/06 17:16:03 by mvaldeta         ###   ########.fr        #
+#    Updated: 2021/03/08 21:09:04 by mvaldeta         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,21 +16,17 @@
 # DESC:
 # (｡◕‿◕｡)
 #
-SRC =	conv_numbers.c/
-		conv_operator.c/
-		ft_printf.c/
-		ft_utilities.c/
-		print_operator.c/
+SRC =	conv_numbers.c\
+		ft_printf.c\
+		ft_utilities.c\
+		conv_operator.c\
 
 OBJ = $(SRC:.c=.o)
 
 CC = gcc
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror -I.
 
 NAME = libftprintf.a
-
-all: $(NAME)
 
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
@@ -44,11 +40,8 @@ fclean: clean
 re: fclean
 		$(NAME)
 
-bonus: $(OBJ) $(BONUS_OBJ)
-	ar rcs $(NAME) $(OBJ) $(BONUS_OBJ)
-
 so:
 	$(CC) -fPIC -c $(CFLAGS) $(SRC)
-	gcc -shared -o libft.so $(OBJ) $(BONUS_OBJ)
+	gcc -shared -o libftprintf.so $(OBJ)
 
 .PHONY: all clean fclean re bonus

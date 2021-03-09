@@ -6,7 +6,7 @@
 /*   By: mvaldeta <mvaldeta@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/07 23:05:04 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/03/08 22:24:27 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef enum type_f
 	c, // single character
 	g, // general format floating point
 	o, // octal base 8
-	p, // %
+	p, // pointer
 	n, // outpust # characters written
 	END_FLAG
 } type_f;
@@ -110,9 +110,8 @@ void conv_ftoa(t_type type, va_list args2);
 void conv_fetoa(t_type tyep, va_list args2);
 void conv_fetoa(t_type type, va_list args2);
 void conv_dtoa(t_type type, va_list args2);
-void conv_fetoa(t_type type, va_list args2);
 void print_str(t_type type, va_list args2);
-void print_str(t_type type, va_list args2);
+void print_c(t_type type, va_list args2);
 
 /*
 ** ft_utilities.c
@@ -123,8 +122,8 @@ void ft_putstr(char *str);
 int ft_strlen(char *str);
 int ft_tolower(int c);
 int ft_toupper(int c);
-size_t ft_intlen_bonus(int n);
 int ft_recursive_power(int nb, int power);
+char *ft_strdup(const char *s1);
 
 /*
 ** conv_numbers
@@ -140,12 +139,12 @@ void ft_putfloat(t_type type, va_list args2);
 /*
 ** ft_printf.c
 */
-int ft_printf(char *format, ...);
+int ft_printf(const char *format, ...);
 
 /*
 ** debugs
 */
-void debug_str(const char *s, char *name);
-void debug_number(int i, char *name);
+/* void debug_str(char *s, char *name);
+void debug_number(int i, char *name); */
 
 #endif
