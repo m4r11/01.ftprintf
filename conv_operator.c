@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 09:22:56 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/09 17:45:31 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/03/10 12:28:36 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void conv_xtoa(t_type type, va_list args2)
         return;
     int j = 0;
     quotient = va_arg(args2, int);
+    if (quotient == 0)
+        ft_putc('0');
     while (quotient != 0)
     {
         remainder = quotient % 16;
@@ -38,7 +40,7 @@ void conv_xtoa(t_type type, va_list args2)
             hexadecimal[j++] = 55 + remainder;
         quotient = quotient / 16;
     }
-    while (j-- >= 0)
+    while (j-- >0)
         ft_putc(ft_tolower(hexadecimal[j]));
     return;
 }

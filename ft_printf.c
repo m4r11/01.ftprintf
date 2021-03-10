@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+ /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
@@ -37,22 +37,18 @@ int ft_printf(const char *format, ...)
 	va_list args;
 	va_list args2;
 	t_struct v;
-	type_f t_f;
 	t_type type;
 
 	va_start(args, format);
 	va_copy(args2, args);
+	v.f = ft_strdup(format);
 
 	v.i = 0;
-	v.f = ft_strdup(format);
-	t_f = d;
 	v.c = 0;
 	while (v.f[v.i])
 	{
 		if (v.f[v.i] != '%')
-		{
 			ft_putc(v.f[v.i]);
-		}
 		else
 		{
 			v.i++;
@@ -60,9 +56,7 @@ int ft_printf(const char *format, ...)
 			while (CONV_S[v.j])
 			{
 				if (CONV_S[v.j] == v.f[v.i])
-				{
 					get_converter[v.j](type, args2);
-				}
 				v.j++;
 			}
 		}
@@ -70,8 +64,5 @@ int ft_printf(const char *format, ...)
 	}
 	va_end(args);
 	free(v.f);
-/* 	if (v.c == 0)
-		return (0);
-	else  */
-		return (counter(0));
+	return (counter(0));
 }

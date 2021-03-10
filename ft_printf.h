@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/09 18:56:37 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/03/10 19:24:05 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,15 @@ typedef enum size_mod
 
 typedef struct s_struct
 {
+	char *str;
 	char *f;
 	char *next;
 	char id;
 	int i;
 	int j;
 	int c;
+	int nbr;
+	void *kind;
 } t_struct;
 
 static int lcounter; 
@@ -121,14 +124,14 @@ void print_c(t_type type, va_list args2);
 
 void ft_putc(char c);
 void ft_putstr(char *str);
-int ft_strlen(char *str);
-int ft_tolower(int c);
-int ft_toupper(int c);
-int ft_recursive_power(int nb, int power);
 char *ft_strdup(const char *s1);
 int	ft_intlen_bonus(int);
 int counter(int n);
 int ft_arglen(va_list TYPE);
+int ft_strlen(char *str);
+int ft_tolower(int c);
+int ft_toupper(int c);
+int ft_recursive_power(int nb, int power);
 
 /*
 ** conv_numbers

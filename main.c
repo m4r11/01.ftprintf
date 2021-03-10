@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:40:48 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/09 18:28:12 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/03/10 19:06:23 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,10 @@ int main()
      printf("----------2END\n");
 	r1 = (ft_printf("%d\n", 1111));
 	ft_printf("%d\n", r1); */
-	r1 = (ft_printf(" % x\n", 0));
-	r2 = (printf(" %x \n", 0));
+	r1 = (ft_printf("%07x\n", 9992));
+	r2 = (printf("%07x\n", 9992));
+	r2 = (ft_printf("%1.2f\n", -1882.999));
+	r2 = (printf("%#s\n", "mary"));
 	printf("%d\n", r1);
 	printf("%d\n", r2);
 	return (0);
