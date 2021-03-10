@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaldeta <mvaldeta@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 22:11:39 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/08 22:31:40 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/03/09 18:09:35 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,30 +46,32 @@ int ft_printf(const char *format, ...)
 	v.i = 0;
 	v.f = ft_strdup(format);
 	t_f = d;
+	v.c = 0;
 	while (v.f[v.i])
 	{
 		if (v.f[v.i] != '%')
+		{
 			ft_putc(v.f[v.i]);
+		}
 		else
 		{
 			v.i++;
 			v.j = 0;
-			while (CONV_S[v.j++])
+			while (CONV_S[v.j])
 			{
 				if (CONV_S[v.j] == v.f[v.i])
+				{
 					get_converter[v.j](type, args2);
+				}
+				v.j++;
 			}
 		}
 		v.i++;
 	}
 	va_end(args);
 	free(v.f);
-	return (0);
-}
-
-int main()
-{
-	ft_putstr("%s FLAG\n");
-	ft_printf("%s", "0");
-	return (0);
+/* 	if (v.c == 0)
+		return (0);
+	else  */
+		return (counter(0));
 }

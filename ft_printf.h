@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaldeta <mvaldeta@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/08 22:24:27 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/03/09 18:56:37 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 #include <limits.h>
 #include <stdbool.h>
 
-#define ARG(t_type) va_arg(args2, t_type)
 
 /*
 ** enums for modularity: flags, format & size
@@ -79,7 +78,10 @@ typedef struct s_struct
 	char id;
 	int i;
 	int j;
+	int c;
 } t_struct;
+
+static int lcounter; 
 
 /*
 **  argument type for function * 
@@ -124,6 +126,9 @@ int ft_tolower(int c);
 int ft_toupper(int c);
 int ft_recursive_power(int nb, int power);
 char *ft_strdup(const char *s1);
+int	ft_intlen_bonus(int);
+int counter(int n);
+int ft_arglen(va_list TYPE);
 
 /*
 ** conv_numbers
@@ -141,10 +146,12 @@ void ft_putfloat(t_type type, va_list args2);
 */
 int ft_printf(const char *format, ...);
 
-/*
-** debugs
+
+/* 
+**debugs
 */
-/* void debug_str(char *s, char *name);
-void debug_number(int i, char *name); */
+
+void debug_str(char *s, char *name);
+void debug_number(int i, char *name);
 
 #endif

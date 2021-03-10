@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conv_numbers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaldeta <mvaldeta@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 20:01:13 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/08 22:25:30 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/03/09 18:11:55 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void ft_putnbr(int nb)
 {
+	t_struct v;
     if (nb <= INT_MAX && nb >= INT_MIN)
     {
         if (nb == INT_MIN)
@@ -35,6 +36,7 @@ void ft_putnbr(int nb)
         else
             ft_putc(nb + '0');
     }
+    //counter(1);
 }
 
 void ft_putnbr_rebase(int number, int baselen)

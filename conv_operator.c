@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conv_operator.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaldeta <mvaldeta@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 09:22:56 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/08 22:25:49 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/03/09 17:45:31 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
