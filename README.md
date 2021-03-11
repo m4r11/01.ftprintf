@@ -5,10 +5,10 @@ This is a student project @ 42Lisboa: recode printf, from libc.
 
 [Notes & Progress record](https://docs.google.com/document/d/1NqyPd7zbsiMmnPDTiYfpBZ20P4QXtxA9oydFnJynKIc/edit?usp=sharing)  
  
-![status]
+[status]
 (https://64.media.tumblr.com/287697fa96445cc25f7f1ec14dc3c7f9/e54694875ee80e01-97/s2048x3072/06d71b16722b241a193dd42ea4cb24cf1d6510bb.png)
 
-![Plan for flag directives]
+[Plan for flag directives]
 (https://64.media.tumblr.com/8d93d56916dac5ccec257d6a2e62c7db/d2da620ab2e6d4ca-31/s1280x1920/9073ec368dcfc327b539e16fe0705215e72f6067.png)
 
 [Leaks tools | memwatch](https://github.com/shenyuflying/memwatch) 
