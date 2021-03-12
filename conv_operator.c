@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   conv_operator.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 09:22:56 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/10 12:28:36 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/03/11 16:00:54 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void conv_itoa(t_type type, va_list args2)
+void conv_itoa(char *formatting, va_list args2)
 {
     int x;
     x = va_arg(args2, int);
     ft_putnbr(x);
 }
-void conv_xtoa(t_type type, va_list args2)
+void conv_xtoa(char *formatting, va_list args2)
 {
     long decimal;
     long quotient;
@@ -45,7 +45,7 @@ void conv_xtoa(t_type type, va_list args2)
     return;
 }
 
-void conv_Xtoa(t_type type, va_list args2)
+void conv_Xtoa(char *formatting, va_list args2)
 {
     long decimal;
     long quotient;
@@ -70,13 +70,13 @@ void conv_Xtoa(t_type type, va_list args2)
     free(hexadecimal);
     return;
 }
-void conv_uitoa(t_type type, va_list args2)
+void conv_uitoa(char *formatting, va_list args2)
 {
     int x;
     x = va_arg(args2, int);
     ft_putnbr(x);
 }
-void conv_ftoa(t_type type, va_list args2)
+void conv_ftoa(char *formatting, va_list args2)
 {
     double f;
     signed long int decipart;
@@ -96,7 +96,7 @@ void conv_ftoa(t_type type, va_list args2)
     decipart = (signed long int)(f + 0.5); //+0.5 to round of the value
     ft_putnbr(decipart);
 }
-void conv_fetoa(t_type type, va_list args2)
+void conv_fetoa(char *formatting, va_list args2)
 {
     double f;
     signed long int decipart;
@@ -118,14 +118,14 @@ void conv_fetoa(t_type type, va_list args2)
     ft_putstr("e+");
 }
 
-void print_str(t_type type, va_list args2)
+void print_str(char *formatting, va_list args2)
 {
     char *print;
     print = va_arg(args2, char *);
     ft_putstr(print);
 }
 
-void print_c(t_type type, va_list args2)
+void print_c(char *formatting, va_list args2)
 {
     char print;
     print = va_arg(args2, int);

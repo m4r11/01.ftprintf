@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:40:48 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/10 19:06:23 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/03/12 00:04:32 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,15 @@ int main()
      printf("----------2END\n");
 	r1 = (ft_printf("%d\n", 1111));
 	ft_printf("%d\n", r1); */
-	r1 = (ft_printf("%07x\n", 9992));
-	r2 = (printf("%07x\n", 9992));
-	r2 = (ft_printf("%1.2f\n", -1882.999));
-	r2 = (printf("%#s\n", "mary"));
-	printf("%d\n", r1);
-	printf("%d\n", r2);
+	//r1 = (ft_printf("hello %-d, %-d\n", 9992, 999));
+	r1 = (ft_printf("%-s\n","olasssss"));
+	r1 = (ft_printf("%+d\n", 9992));
+	r2 = (ft_printf("%#x\n", 9992));
+	/*r2 = (ft_printf("%+f\n", 82.999));
+	r1 = (ft_printf("%-d%-d\n", 9992, 999));
+	r1 = (ft_printf("% d\n", 9992));
+	r1 = (ft_printf("%hd\n", 9992));
+	r1 = (ft_printf("%.d\n", 9992));
+	r1 = (ft_printf("%-s", "hello")); */
 	return (0);
 }

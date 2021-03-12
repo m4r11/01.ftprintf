@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/10 19:24:05 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/03/11 19:39:42 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,66 +15,55 @@
 */
 
 #ifndef FT_PRINTF_H
-#define FT_PRINTF_H
+# define FT_PRINTF_H
 
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdarg.h> /* va_list, va_start, va_arg, va_end */
-#include <stdio.h>
-#include <limits.h>
-#include <stdbool.h>
-
+# include "ft_directives.h"
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdarg.h> /* va_list, va_start, va_arg, va_end */
+# include <stdio.h>
+# include <limits.h>
+# include <stdbool.h>
 
 /*
 ** enums for modularity: flags, format & size
+** 
 */
-#define CONV_S "dixXufeEsScgopn"
 
-typedef enum type_f
-{
-	d, // decimal int
-	i, // int
-	x, // int hex
-	X, // int hex
-	u, // unsiged int
-	f, // float
-	e, // float expon.
-	E, // float expon.
-	s, // string
-	S, // string
-	c, // single character
-	g, // general format floating point
-	o, // octal base 8
-	p, // pointer
-	n, // outpust # characters written
-	END_FLAG
-} type_f;
+# define CONV_S "dixXufeEsScgopn"
 
-typedef enum format
+typedef enum e_ty
 {
-	left_just,
-	pad_zeros,
-	plus_sign,
-	minus_sign,
-	deviant_op
-} format;
+	d,x,X,u,f,e,E,s,S,c,g,o,p,n,M,END_FLAG
+}			t_ty;
 
-typedef enum size_mod
+# define DIR_S "-+ 0hljz.#123456789"
+
+typedef enum e_dir 
 {
-	h,
-	l,
-	L
-} size;
+    POSITION,
+    SIGN,
+    SPACESIGN,
+    ZERO,
+    SHORT,
+    LONG,
+    UINTMAX,
+    UNSIGNED,
+    PRECISION,
+    ALTERNATE, 
+    FIELD,
+    END_DIR,
+}			t_dir;
+
 
 /*
 ** struct with general use variables 
 */
-
 typedef struct s_struct
 {
 	char *str;
-	char *f;
+	char *temp;
 	char *next;
 	char id;
 	int i;
@@ -84,10 +73,9 @@ typedef struct s_struct
 	void *kind;
 } t_struct;
 
-static int lcounter; 
-
 /*
-**  argument type for function * 
+**  argument type for function, this will be something else
+** 	it's juts a placeholder in function 
 */
 
 typedef struct s_type
@@ -98,25 +86,42 @@ typedef struct s_type
 } t_type;
 
 /*
-**  function * type def
+**  function * type def for conversion
 */
 
-typedef void (*fptr)(t_type type, va_list args2);
+typedef void (*fptrconv)(char *formatting, va_list args2);
+typedef void (*fptrdir)(char *dir);
 
 /*
-** func's_declared 
+**  conversion func's_declared 
 */
 
-void conv_itoa(t_type type, va_list args2);
-void conv_xtoa(t_type type, va_list args2);
-void conv_Xtoa(t_type type, va_list args2);
-void conv_uitoa(t_type type, va_list args2);
-void conv_ftoa(t_type type, va_list args2);
-void conv_fetoa(t_type tyep, va_list args2);
-void conv_fetoa(t_type type, va_list args2);
-void conv_dtoa(t_type type, va_list args2);
-void print_str(t_type type, va_list args2);
-void print_c(t_type type, va_list args2);
+void conv_itoa(char *formatting, va_list args2);
+void conv_xtoa(char *formatting, va_list args2);
+void conv_Xtoa(char *formatting, va_list args2);
+void conv_uitoa(char *formatting, va_list args2);
+void conv_ftoa(char *formatting, va_list args2);
+void conv_fetoa(char *formatting, va_list args2);
+void conv_fetoa(char *formatting, va_list args2);
+void conv_dtoa(char *formatting, va_list args2);
+void print_str(char *formatting, va_list args2);
+void print_c(char *formatting, va_list args2);
+
+/*
+**  format directives func's_declared 
+*/
+
+void    put_position(char *dir);
+void    put_sign(char *dir);
+void    put_space(char *dir);
+void    put_zeroes(char *dir);
+void    put_len(char *dir);
+void    put_dec_precision(char *dir);
+void    put_alternate(char *dir);
+void    put_field(char *dir);
+
+char *has_formating(char *format, int n);
+int  get_index(char *s1, char *s2);
 
 /*
 ** ft_utilities.c
@@ -125,13 +130,14 @@ void print_c(t_type type, va_list args2);
 void ft_putc(char c);
 void ft_putstr(char *str);
 char *ft_strdup(const char *s1);
-int	ft_intlen_bonus(int);
+int ft_intlen_bonus(int);
 int counter(int n);
 int ft_arglen(va_list TYPE);
 int ft_strlen(char *str);
 int ft_tolower(int c);
 int ft_toupper(int c);
 int ft_recursive_power(int nb, int power);
+char	*ft_strchr(const char *s, int c);
 
 /*
 ** conv_numbers
@@ -148,7 +154,6 @@ void ft_putfloat(t_type type, va_list args2);
 ** ft_printf.c
 */
 int ft_printf(const char *format, ...);
-
 
 /* 
 **debugs
