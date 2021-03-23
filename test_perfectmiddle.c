@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 11:05:19 by user              #+#    #+#             */
-/*   Updated: 2021/03/23 10:56:45 by user             ###   ########.fr       */
+/*   Updated: 2021/03/23 10:52:12 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,10 +140,7 @@ int     main()
     ft_putc('\n');
     print_the_middle(input3, find_first_flag(input3), 0);
     ft_putc('\n'); */
- /*    print_the_middle(input, find_first_flag(input));
-    print_the_middle(input2, find_first_flag(input2));
-    print_the_middle(input3, find_first_flag(input3));
-    print_the_middle(input4, find_first_flag(input4)); */
+    print_the_middle(input4, find_first_flag(input4));
     //ft_putc('\n');
 
     //printf("%d\n", print_the_rest(s, start, 7));

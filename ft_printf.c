@@ -55,7 +55,7 @@ int ft_printf(const char *format, ...)
 		if (v.temp[v.i] == '%')
 		{
 			flag = parse(v.temp, v.i);
-			debug_number(flag, "flag");
+			//debug_number(flag, "flag");
 			while (ft_intstrchr(v.temp, '%', v.i) != -1)
 			{
 				print_the_middle(v.temp, find_first_flag(v.temp));
@@ -76,7 +76,6 @@ int ft_printf(const char *format, ...)
 		else 
 		{
 			ft_putc(v.temp[v.i]);
-			//debug_number(v.i, "v.i");
 		}
 		v.i++;
 	}
@@ -94,8 +93,8 @@ int	parse(char *to_parse, int i)
 
 		find_flag = loop_through(CONV_S, to_parse, i);
 		find_dir = loop_for_directives(DIR_S, to_parse, i);
-		debug_number(find_flag, "flag");
-		debug_number(find_dir, "dir");
+/* 		debug_number(find_flag, "flag");
+		debug_number(find_dir, "dir"); */
 		has_formating(to_parse, find_dir, args2, find_flag);
 		get_converter[find_flag](parsed, find_dir, args2);
 return(find_flag);

@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 11:14:27 by user              #+#    #+#             */
-/*   Updated: 2021/03/21 13:26:40 by user             ###   ########.fr       */
+/*   Updated: 2021/03/22 22:13:48 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ char   put_len(char *dir,va_list args2, int flag)
 } */
 char    put_alternate(char *dir,va_list args2, int flag)
 {
+        printf("imhere");
         ft_putstr("0x");
          return(0);
 }

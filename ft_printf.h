@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/21 19:33:08 by user             ###   ########.fr       */
+/*   Updated: 2021/03/23 21:16:24 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,37 +169,39 @@ char    star_s(char *dir, va_list args2);
 */
 
 char    precision_s(char *dir,va_list args2);
-
+char    precision_int(char *dir,va_list args2);
 /*
 ** ft_utilities.c
 */
 
-void ft_putc(char c);
-void ft_putstr(char *str);
-char ft_putstr_limit(char *str, int limit);
-char *ft_strdup(const char *s1);
-int ft_intlen_bonus(int);
-int counter(int n);
-int ft_arglen(va_list TYPE);
-int ft_strlen(char *str);
-int ft_tolower(int c);
-int ft_toupper(int c);
-int ft_recursive_power(int nb, int power);
+void	ft_putc(char c);
+void	ft_putstr(char *str);
+char	ft_putstr_limit(char *str, int limit);
+char	*ft_strdup(const char *s1);
+int		ft_intlen(int);
+int		counter(int n);
+int 	ft_arglen(char * search);
+int		ft_strlen(char *str);
+int		ft_tolower(int c);
+int		ft_toupper(int c);
+int		ft_recursive_power(int nb, int power);
 char	*ft_strchr(const char *s, int c);
 int		ft_str_is_numeric(char *str);
-int			ft_atoi(const char *str);
+int		ft_atoi(const char *str);
 char	*print_x_times(int n, char c);
-int    loop_through(char *flags, char *format, int a);
-int	ft_isalpha(int c);
-int			ft_simple_atoi(const char *str);
+int		loop_through(char *flags, char *format, int a);
+int		ft_isalpha(int c);
+int		ft_simple_atoi(const char *str);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 char	*ft_strnew(size_t size);
-int arg_number(char *to_parse);
+int		arg_number(char *to_parse);
 int		ft_intstrchr(char *s, int c, int start);
 int		ft_putcharfrom(char *s, int start, char *dir, char *flag);
 int		ft_intstrchr_flag(char *s, int c, int start);
-int find_first_flag(char *input);
-int   print_the_middle(char *input, int flag1_end);
+int		find_first_flag(char *input);
+int		print_the_middle(char *input, int flag1_end);
+int     find_width(char *dir, int start);
+int		ft_isdigit(int c);
 
 /*
 ** conv_numbers

@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:40:48 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/21 19:55:52 by user             ###   ########.fr       */
+/*   Updated: 2021/03/23 22:42:59 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,22 @@ int main()
 	//printf(" %p ", -1);
 	//ft_printf(" %i ", 0);
 	//printf(" %.i ", 0);
-	ft_printf(" %-.2i ", 0);
-	//printf(" %.i ", 0);
-	//ft_printf(" %-10p %10p ", 1, -1);
-	/* ft_printf(" %.2s ", "4567"); */
-	//printf(" %*.0s\n %.2s \n", 10, "123", "4567");
-/* 	ft_printf(" %*.s\n %.1s \n", 10, "123", "4567");
-	printf(" %*.s\n", 10, "123"); */
-	//printf(" %*.0s\n", 10, "123");
-	//ft_printf(" %*.s \n", 10, "123abcdefghijklm");
+/* 	ft_printf(" %.i \n", 0);
+	printf(" %.i \n", 0); */
+/* 	ft_printf(" %-3.2i \n", 0);
+	printf(" %-3.2i \n", 0); */
+/* 	ft_printf(" %-3.2i %10.42i \n", 0, 0);
+	printf(" %-3.2i %10.42i \n", 0, 0); */
+	/* ft_printf(" %-3.2i\n", 10);
+	printf(" %-3.2i\n", 10); */
+	//printf(" %-5.8i\n", 10);
+/* 	ft_printf(" %10.4i \n", -10);
+	printf(" %10.4i \n", -10); */
+	//printf(" %-3.2i\n", 10);
+	//ft_printf(" %-3.2i \n", 0);
+	ft_printf(" %-3.2i\n %10.42i \n", 0, 0);
+	//printf(" %-3.2i\n %10.42i \n", 0, 0);
+	//ft_printf(" %10.42i \n", 0);
 		return (0);
 }
 

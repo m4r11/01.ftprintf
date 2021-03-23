@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 17:59:38 by user              #+#    #+#             */
-/*   Updated: 2021/03/18 12:57:32 by user             ###   ########.fr       */
+/*   Updated: 2021/03/23 22:39:07 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char field_s(char *dir,va_list args2)
         converted = ft_simple_atoi(to_convert); 
         x1 = va_arg(args2, char*);
         x1converted = ft_simple_atoi(x1);
-        x1len = ft_intlen_bonus(x1converted);
+        x1len = ft_intlen(x1converted);
         if (temp[0] == '-')
         {
      /*        debug_number(converted, "x"); 
@@ -105,6 +105,18 @@ char    put_field(char *dir,va_list args2, int flag)
         int converted;
         char *temp = (ft_strchr(dir, '%') + 1);
         len = ft_strlen(temp);
+
+       //debug_str(temp, "t");
+        if (temp[0] == '-' && (temp[1] == '.' || temp[2] == '.' || temp[3] == '.'))
+        {
+            precision_int(dir, args2);
+            return(0);
+        }
+        if ((ft_isdigit(temp[0]) == 1) && (temp[1] == '.' || temp[2] == '.' || temp[3] == '.'))
+        {
+            precision_int(dir, args2);
+            return(0);
+        }
 
         if (temp[0] == '-' && temp[1] == '*')
             field_c_combos(dir, args2); 

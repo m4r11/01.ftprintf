@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 17:20:24 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/19 17:18:50 by user             ###   ########.fr       */
+/*   Updated: 2021/03/23 21:16:43 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,23 +64,18 @@ int ft_strlen(char *str)
 	return (x);
 }
 
-/* int ft_arglen(va_list TYPE)
+int ft_arglen(char * search)
 {
-	int i;
-	static int x;
-	if (!TYPE)
-		return (x += 0);
-	i = 0;
-	while(&TYPE[i])
+	int count;
+	count = 0;
+	while(*search)
 	{
-		i++;
-		x++;
+		if (*search == '%')
+			count +=1;
+	search++;
 	}
-	debug_number(i,"i");
-	debug_number(x, "x");
-	return (x += i);
-	return (0);
-} */
+return(count);	
+}
 
 int ft_tolower(int c)
 {
@@ -96,16 +91,31 @@ int ft_toupper(int c)
 	return (c);
 }
 
-int ft_intlen_bonus(int n)
+int ft_intlen(int n)
 {
 	int len;
 	len = 1;
-	while (n > 9)
+	if (n < 0)
 	{
-		len++;
-		n /=10;
+		len = 2;
+		n *= -1;
+		while (n > 9)
+		{
+			len++;
+			n /=10;
+		}
+		return(len);
 	}
-	return (len);
+	else 
+	{
+		while (n > 9)
+		{
+			len++;
+			n /=10;
+		}
+		return (len);
+	}
+	return(-1);
 }
 
 int ft_recursive_power(int nb, int power)
@@ -260,6 +270,14 @@ int	ft_isalpha(int c)
 		return (1);
 	else
 		return (0);
+}
+
+
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
@@ -420,6 +438,17 @@ int   print_the_middle(char *input, int flag1_end)
             ft_putc(input[middle]);
             middle++;
     }
+    return(0);
+}
+
+int     find_width(char *dir, int start)
+{
+    int width;
+
+    if (dir[start + 1] == '-')
+       return(width = (ft_simple_atoi(&dir[start+2]) * -1));
+    if (ft_isdigit(dir[start + 1]) == 1)
+        return(width = ft_simple_atoi(&dir[start+1]));
     return(0);
 }
 
