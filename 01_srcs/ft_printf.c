@@ -51,31 +51,22 @@ int ft_printf(const char *format, ...)
   	v.i = 0;
  	while (v.temp[v.i])
 	{
+		//debug_number(v.i, "vi");
 		if (v.temp[v.i] == '%')
 		{
 			flag = parse(v.temp, v.i);
-			//debug_number(flag, "flag");
 			while (ft_intstrchr(v.temp, '%', v.i) != -1)
 			{
 				print_the_middle(v.temp, find_first_flag(v.temp));
 				v.i = ft_intstrchr(v.temp, '%', v.i);
-	/* 			debug_number(v.i, "v.i");
-				debug_number(flag, "flag"); */
 				flag = parse(v.temp, v.i);
 			} 
-			v.i = ft_putcharfrom(v.temp, v.i, DIR_S, CONV_S) + v.i;
-			if (v.temp[v.i] != CONV_S[flag])
-			{
-				//debug_number(flag, "flag");
-				ft_putc(v.temp[v.i]);
-			}
-			else 
-				v.i++;
+			v.i = ft_putcharfrom(v.temp, v.i, flag);
+			if (v.i == END)
+				break;
 		}
 		else 
-		{
 			ft_putc(v.temp[v.i]);
-		}
 		v.i++;
 	}
    va_end(args);
@@ -94,7 +85,14 @@ int	parse(char *to_parse, int i)
 		find_dir = loop_for_directives(DIR_S, to_parse, i);
 /* 		debug_number(find_flag, "flag");
 		debug_number(find_dir, "dir"); */
-		has_formating(to_parse, find_dir, args2, find_flag);
+		has_formating(parsed, find_dir, args2, find_flag);
 		get_converter[find_flag](parsed, find_dir, args2);
 return(find_flag);
 }
+
+/* 
+** string to fetch types
+** CONV_S "dixXufeEsScgopn"
+** string to fetch dir
+** DIR_S "*-+ 0hljz.#123456789" 
+*/

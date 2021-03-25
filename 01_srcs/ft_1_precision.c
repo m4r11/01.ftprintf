@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   precision.c                                        :+:      :+:    :+:   */
+/*   ft_1_precision.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:01:19 by user              #+#    #+#             */
-/*   Updated: 2021/03/23 22:58:40 by user             ###   ########.fr       */
+/*   Updated: 2021/03/25 18:24:43 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,101 +16,80 @@ char precision_s(char *dir, va_list args2)
 {
     int start;
     int real;
-    int x;
+    int min_c;
     char *print;
 
     print = va_arg(args2, char *);
-    //debug_str(print, "print");
     start = ft_intstrchr(dir, '%', 0);
-    real = (ft_intstrchr(dir, '%', start) + 2);
-    ft_putc(dir[real]);
-    x = ft_atoi(&dir[real]);
-    ft_putstr_limit(print, x);
-    ft_putstr_limit(print, x);
-    //debug_number(real, "real");
+    real = ft_intstrchr(dir, '.', start) + 1;
+    //debug_str(&dir[real], "real");
+    min_c = ft_atoi(&dir[real]);
+    if (ft_strlen(print) == min_c)
+    {
+        ft_putstr(print);
+        return(0);
+    }
+    if (ft_strlen(print) < min_c)
+    {
+        ft_putstr(print);
+        return(0);
+    }
+    else 
+        ft_putstr_limit(print, min_c);
+    //todo: s combos :) 
+    return (0);
+}
+
+char precision_int_combos(char *dir, va_list args2)
+{
+    /* this func handles the combination of field '-' star '*' precision '.' */
+    int width = va_arg(args2, int);
+    int min_c = va_arg(args2, int);
+    int print = va_arg(args2, int);
+    int len = ft_intlen(print);
+ /*    debug_number(width, "width");
+    debug_number(min_c, "minc");
+    debug_number(print, "print");
+    debug_number(len, "len"); */
+    //debug_str(dir, "dir");
+
+    //printf("cute program alert\n");
+    precision_op(len, min_c, width, print);
     return (0);
 }
 
 char precision_int(char *dir, va_list args2)
 {
-    int start;
+    static int position;
     static int real;
-    int x;
+    int min_c;
     int print;
     int width;
-    static int position;
-    int arglen = ft_arglen(dir);
+    int start;
 
-    position += 1;
-    print = va_arg(args2, int);
     start = ft_intstrchr_flag(dir, '%', position);
+    //debug_number(start, "***START***");
+    if (dir[start + 1] == '-' && dir[start + 2] == '*' && dir[start + 3] == '.')
+        return (precision_int_combos(&dir[start], args2));
+   
     real = (ft_intstrchr(dir, '.', start));
     width = find_width(dir, start);
-    x = ft_atoi(&dir[real + 1]);
+    min_c = ft_atoi(&dir[real + 1]);
+/*     debug_number(width, "w");
+    debug_number(real, "r");
+    debug_number(min_c, "min"); */
+    if (min_c == 0)
+        return(0);
+    position += 1;
+    print = va_arg(args2, int);
     int len = ft_intlen(print);
-    debug_number(len, "len");
-    debug_number(x, "x");
-    debug_number(width, "w");
-/*     debug_number(real, "real");
-    debug_number(print, "print"); */
     if (real == -1 && width == 0)
         return (0);
     if (print < -100000000 || print > 100000000)
-        return(0);
-    if ((x == 0 && ft_isalpha(dir[real])) || real == -1)
         return (0);
-    if (len < x)
-    {
-        if (width >= 0 && print >= 0)
-        {
-       
-                print_x_times(width - x, ' ');
-                print_x_times(x - len, '0');
-                ft_putnbr(print);
-        } 
-        if (width >= 0 && print < 0)
-        {
-                print_x_times(width - (x + 1), ' ');
-                ft_putc('-');
-                print_x_times(x - len, '0');
-                ft_putnbr(print * -1);
-        }
-        else
-        {
-            printf("im here");
-            width *= -1;
-            print_x_times(x - len, '0');
-            ft_putnbr(print);
-            print_x_times(width - x, ' ');
-        }
-       return(0);
-    }
-    if (len > x)
-    {
-        if (width >= 0 && print >= 0)
-        {
-    
-                print_x_times(width - x, ' ');
-                print_x_times(x - len, '0');
-                ft_putnbr(print);
-        }
-        if (width >= 0 && print < 0)
-        {
-                ft_putc('-');
-                print_x_times(width - x, ' ');
-                print_x_times(x - len, '0');
-                ft_putnbr(print * -1);
-        }
-        else
-        {
-            printf("😈");
-            width *= -1;
-            print_x_times(x - len, '0');
-            ft_putnbr(print);
-            print_x_times(width - x, ' ');
-        }
+    if ((min_c == 0 && ft_isalpha(dir[real])) || real == -1)
         return (0);
-    }
+    precision_op(len, min_c, width, print);
     position += real;
     return (0);
 }
@@ -119,16 +98,8 @@ char put_dec_precision(char *dir, va_list args2, int flag)
 {
     if (flag == 8)
         return (precision_s(dir, args2));
-    if (flag == 0)
-    {
-        printf("your cute program returned this func 👽");
+    if (flag == 0 || flag == 13)
         return (precision_int(dir, args2));
-    }
-    if (flag == 13)
-    {
-        printf("your cute program returned this func 👽");
-        return (precision_int(dir, args2));
-    }
-    //ft_putstr("precision");
+
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 11:43:24 by user              #+#    #+#             */
-/*   Updated: 2021/03/24 11:47:02 by user             ###   ########.fr       */
+/*   Updated: 2021/03/25 12:31:00 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int find_first_flag(char *input)
     }
     return(0);
 }
-
 
 int     find_width(char *dir, int start)
 {

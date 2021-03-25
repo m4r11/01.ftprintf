@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 13:55:42 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/24 12:46:22 by user             ###   ########.fr       */
+/*   Updated: 2021/03/24 17:58:33 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ char *has_formating(char *format, int n, va_list args2, int flag)
 {
  /*    debug_number(n, "n");
     debug_str(format, "format"); */
+    //debug_str(format, "format");
     if(n == NO_FORMAT)
         return(0);
     else

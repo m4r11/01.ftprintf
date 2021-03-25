@@ -6,87 +6,89 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:40:48 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/24 13:19:02 by user             ###   ########.fr       */
+/*   Updated: 2021/03/25 19:13:01 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "./00_includes/ft_printf.h"
+
 int main()
 {
-	int r1, r2;
-	/* ft_printf("hello como estás *%c", '0'); */
-/* 	ft_printf(" %c ", '0'); */
-/* 	printf("\n");
-	printf("%c", '0');
-	printf("\n");
-	ft_printf("%c", '0');
-	printf("\n"); */
-/* 	printf("\n");
+	int r1;
+	int r2;
+/* 	ft_printf("******************************\n");
+	ft_printf("***         case c        ****\n");
+	ft_printf("******************************\n");
+	ft_printf("\n"); */
+/* 	printf("%-10c%*c%c*\n",'0', 10, '1', '2');
+	ft_printf("%-10c%*c%c*\n",'0', 10, '1', '2'); */
+/* 	ft_printf("%c", '0');
+	ft_printf("\n");
 	ft_printf(" %c ", '0');
-	printf("\n");
-	printf(" %c ", '0'); */
-/* 	printf("\n");
-	ft_printf("10%c", '0');
-	printf("\n");
-	printf("10%c", '0'); */
-	//printf("\n");
-	//printf("%10c", '0');
-	//printf("\n");
-/* 	printf("\n");
-	ft_printf("%10c", '0');
-	printf("\n");
-	printf("%10c", '0');
-	printf("\n"); */
-	/* printf("-10%c", '0');
-	printf("\n");
-	ft_printf("-10%c", '0');
-	printf("\n"); */
-/* 	printf("\n"); */
-/* 	printf("%*c", 1, '0');
-	printf("\n"); */
-	/* ft_printf("%*c", 1, '0'); */
-	/* printf("%*c", 2, '0'); */
-/* 	ft_printf("%*c", 2, '0'); */
-/* 	ft_printf("%*c", -2, '0');
-	printf("\n");
-	printf("%*c", -2, '0'); */
-/* 	printf("*%c%*c", '0', 10, '1');
-	printf("\n"); */
-/* 	ft_printf("*%c%*c", '0', 10, '1');	 */
-/* 	ft_printf("%*c%*c", -10, '0', 10, '1'); */
-	/* ft_printf("%*c%*c", -10, '0', 10, '1'); */
-/* 	printf("\n");
-	printf("%*c", -2, '0');
-	printf("\n"); */
- 	//printf("%-10c", '0');
- 	//ft_printf("10%c", '0');
-	//printf(" -%-*c* -%-*c* ", 2, 0, -2, 0);
-	/* ft_printf(" -%-*c*-%-*c", 2, 0,-2, 0); */
-	//ft_printf("%*c%*c", -10, '0', 10, '1');
-	//ft_printf("*%c%*c", '0', 10, '1');
-	//printf("%-*c", 10, '1');
-	//ft_printf(" %-4s  %-4s \n", "123", "123");
-/* 	ft_printf(" %*.0s\n %.2s \n", 10, "123", "4567"); */
-	//ft_printf(" %*.0s %.2s ", 10, "123", "4567");
-	//printf(" %*.3s %.3s ", 10, "123", "4567");
-	//printf(" %p ", -1);
-	//ft_printf(" %i ", 0);
-	//printf(" %.i ", 0);
-/* 	ft_printf(" %.i \n", 0);
-	printf(" %.i \n", 0); */
-/* 	ft_printf(" %-3.2i \n", 0);
-	printf(" %-3.2i \n", 0); */
+	ft_printf("\n"); */
+/* 	ft_printf("%*c", 1, '0');
+	ft_printf("\n");
+	printf("%-10c%*c%c*",'0', 10, '1', '2')
+	ft_printf("\n"); */
+/* 	ft_printf("******************************\n");
+	ft_printf("***         case s        ****\n");
+	ft_printf("******************************\n"); */
+/* 	ft_printf("\n");
+	ft_printf(" %*.s %.1s ", 10, "123", "4567");
+	printf(" %*.s %.1s ", 10, "123", "4567");
+	ft_printf("\n"); */
+/* 	ft_printf(" %*.3s %.3s ", 10, "123", "4567");
+	printf(" %*.3s %.3s ", 10, "123", "4567"); */
+/* 	ft_printf("\n");
+	ft_printf(" %*.s %.1s \n", 10, "123", "4567");
+	printf(" %*.s %.1s \n", 10, "123", "4567");
+	ft_printf("\n"); */
+/* 	ft_printf("\n");
+	ft_printf(" %*.4s %.4s ", 10, "123", "4567");
+	printf(" %*.4s %.4s ", 10, "123", "4567");
+	ft_printf("\n"); */
+	//r1 = printf(" %*.5s %*.5s \n", -10, "123", 10, "4567");
+/* 	printf(" %*.5s %*.5s \n", 10, "123", -10, "4567");
+	ft_printf(" %*.5s %*.5s \n", 10, "123", -10, "4567"); */
+	//ft_printf(" %-4s %4s ", "123", "4567");
+/* 	printf(" %0.s %0.s ", "123", "4567");
+	ft_printf(" %0.s %0.s ", "123", "4567"); */
+/* 	printf(" %3.3s %3.3s ", "123", "4567");
+	ft_printf(" %3.3s %3.3s ", "123", "4567"); */
+	printf(" %4.3s %-4.3s ", "123", "4567");
+	ft_printf(" %4.3s %-4.3s ", "123", "4567");
+/* 	printf(" %*.5s %*.5s ", 10, "123", -10, "4567");
+	ft_printf(" %*.5s %*.5s ", 10, "123", -10, "4567"); */
+/* 	printf(" %*.5s %.5s ", 10, "123", "4567");
+	ft_printf(" %*.5s %.5s ", 10, "123", "4567"); */
+/* 	printf(" %*.5s %*.5s ", 10, "123", 10, "4567");
+	ft_printf(" %*.5s %*.5s ", 10, "123", 10, "4567"); */
+	//printf(" %*.5s %.5s ", 10, "123", "4567");
+	ft_printf("\n");
+	//ft_printf(" %1s %1s \n", "123", "4567");
+	//printf("\nr1 :%d \nr2 :%d", r1, r2);
+/* 	ft_printf("******************************\n");
+	ft_printf("***         case i        ****\n");
+	ft_printf("******************************\n");
+	ft_printf("\n"); */
 /* 	ft_printf(" %-3.2i %10.42i \n", 0, 0);
 	printf(" %-3.2i %10.42i \n", 0, 0); */
-	/* ft_printf(" %-3.2i\n", 10);
-	printf(" %-3.2i\n", 10); */
-	//printf(" %-5.8i\n", 10);
-/* 	ft_printf(" %10.4i \n", -10);
-	printf(" %10.4i \n", -10); */
-	//printf(" %-3.2i\n", 10);
-	//ft_printf(" %-3.2i \n", 0);
-	ft_printf(" %-3.2i\n %10.42i \n", 0, 0);
-	//printf(" %-3.2i\n %10.42i \n", 0, 0);
-	//ft_printf(" %10.42i \n", 0);
+/* 	ft_printf(" %-3.2i %10.42i \n", 1, -1);
+	printf(" %-3.2i %10.42i \n", 1, -1); */
+/* 	ft_printf(" %-3.2i %10.42i \n", 10, -10);
+	printf(" %-3.2i %10.42i \n", 10, -10); */
+/* 	ft_printf(" *%*.*i* \n", 10, 21, -10);
+	ft_printf(" *%-*.*i* *%*.*i*\n", 4, 5, 10, 10, 21, -10);
+	printf(" *%-*.*i* *%*.*i*\n", 4, 5, 10, 10, 21, -10); */
+/* 	ft_printf(" *%-*.*i* *%*.*i* ", 4, 5, 10, 10, 21, -10);
+	ft_printf("\n");
+	printf(" *%-*.*i* *%*.*i* ", 4, 5, 10, 10, 21, -10); */
+	/* ft_printf("******************************\n");
+	ft_printf("***         case d        ****\n");
+	ft_printf("******************************\n");
+	ft_printf("\n");
+	ft_printf(" %.d ", 0);
+	printf(" %.d \n", 0);*/
 		return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/24 12:43:18 by user             ###   ########.fr       */
+/*   Updated: 2021/03/25 10:37:16 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define NO_FORMAT -1
 # define FOUND 
 # define LETTER 1
+# define END -3
 
 va_list args;
 va_list args2;
@@ -165,11 +166,20 @@ char field_s(char *dir,va_list args2);
 char    star_s(char *dir, va_list args2);
 
 /*
+** precision_tools.c
+*/
+
+char    minor_len(int len, int min_c, int width, int print);
+char    greater_len(int len, int min_c, int width, int print);
+char	precision_op(int len, int min_c, int width, int print);
+
+/*
 ** precision.c
 */
 
 char    precision_s(char *dir,va_list args2);
 char    precision_int(char *dir,va_list args2);
+char	precision_int_combos(char *dir, va_list args2);
 /*
 ** ft_utilities.c
 */
@@ -196,7 +206,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len);
 char	*ft_strnew(size_t size);
 int		arg_number(char *to_parse);
 int		ft_intstrchr(char *s, int c, int start);
-int		ft_putcharfrom(char *s, int start, char *dir, char *flag);
+int		ft_putcharfrom(char *s, int start, char flag);
 int		ft_intstrchr_flag(char *s, int c, int start);
 int		find_first_flag(char *input);
 int		print_the_middle(char *input, int flag1_end);
@@ -233,5 +243,6 @@ int	parse(char *to_parse, int i);
 
 void debug_str(char *s, char *name);
 void debug_number(int i, char *name);
+
 
 #endif

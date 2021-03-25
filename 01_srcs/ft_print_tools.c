@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 11:39:56 by user              #+#    #+#             */
-/*   Updated: 2021/03/24 12:16:13 by user             ###   ########.fr       */
+/*   Updated: 2021/03/25 18:09:17 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,47 +18,25 @@ char ft_putstr_limit(char *str, int limit)
 	int i;
 
 	i = 0;
-	while ((str[i]) < str[limit])
+
+	while ( str[i] && str[i] < str[limit])
 	{
 		ft_putc(str[i]);
 		++i;
-		//counter(1);
 	}
 	return(0);
 }
 
-int		ft_putcharfrom(char *s, int start, char *dir, char *flag)
+int		ft_putcharfrom(char *s, int start, char flag)
 {
 	int i;
 	i = start;
-    int j; 
-    int k;
     int len = 0;
-    while(s[i] != '\0')
-    {
-        j = 0;
-        while(dir[j] != '\0')
-        {
-            if (dir[j] == s[i])
-            {
-                len+=1;
-                break;
-            }
-            j++;
-        }
-        k = 0;
-        while(flag[k] != '\0')
-        {
-            if (flag[k] == s[i])
-            {
-                len+=1;
-                break;
-            }
-            k+=1;
-        }
+    while(s[i] != CONV_S[flag])
         i++;
-    }
-	return(len);
+    if (i == (ft_strlen(s)-1))
+        return(END);
+    return(i);
 }
 
 int   print_the_middle(char *input, int flag1_end)
