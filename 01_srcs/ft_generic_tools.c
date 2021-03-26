@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 17:20:24 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/24 12:16:01 by user             ###   ########.fr       */
+/*   Updated: 2021/03/26 12:43:01 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,9 @@ void ft_putstr(char *str)
 
 int ft_strlen(char *str)
 {
+	if (!str)
+		return(0);
 	int x;
-
 	x = 0;
 	while (str[x] != '\0')
 	{

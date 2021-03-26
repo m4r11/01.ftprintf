@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 17:59:38 by user              #+#    #+#             */
-/*   Updated: 2021/03/25 19:13:45 by user             ###   ########.fr       */
+/*   Updated: 2021/03/26 11:33:23 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,17 @@ char field_s(char *dir, va_list args2)
         j++;
     }
     to_convert[j] = '\0';
-    if(verify && (ft_isdigit(verify[1]) || verify[1] == '-'));
+    if(verify && (ft_isdigit(verify[1]) || verify[1] == '-'))
     {
-        /* todo:fix this */
-        printf("cute");
         return(precision_s(dir, args2));
     }
     converted = ft_simple_atoi(&to_convert[pin + 1]);
     pin = ft_intstrchr(dir, '%', pin);
     x1 = va_arg(args2, char *);
+    if (x1 == NULL)
+    {
+        return(precision_s(dir, args2));
+    }
     x1converted = ft_simple_atoi(x1);
     x1len = ft_intlen(x1converted);
     if(verify && verify[1] == 's')
