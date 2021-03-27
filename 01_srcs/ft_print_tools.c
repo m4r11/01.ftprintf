@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 11:39:56 by user              #+#    #+#             */
-/*   Updated: 2021/03/25 18:09:17 by user             ###   ########.fr       */
+/*   Updated: 2021/03/27 14:47:13 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,12 @@
 
 char ft_putstr_limit(char *str, int limit)
 {
-	t_struct v;
 	int i;
-
 	i = 0;
-
-	while ( str[i] && str[i] < str[limit])
+	while (i < limit)
 	{
 		ft_putc(str[i]);
-		++i;
+		i++;
 	}
 	return(0);
 }
@@ -61,7 +58,7 @@ int   print_the_middle(char *input, int flag1_end)
     return(0);
 }
 
-char	*print_x_times(int n, char c)
+char	print_x_times(int n, char c)
 {
 	//debug_number(n, "convertedn");
 	while (n > 0)

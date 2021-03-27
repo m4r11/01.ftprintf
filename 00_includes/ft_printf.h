@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/25 10:37:16 by user             ###   ########.fr       */
+/*   Updated: 2021/03/27 14:47:40 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ typedef enum e_dir
 }			t_dir;
 
 /*
-** struct with general use variables 
+** struct for general purpose variables used in main printf.c
 */
 
 typedef struct s_struct
@@ -97,6 +97,25 @@ typedef struct s_struct
 	int nbr;
 	void *kind;
 } t_struct;
+
+/*
+** struct for "directives" variables 
+*/
+
+typedef struct s_dir_variables
+{
+    int i;
+    int j;
+    int len;
+	int x;
+    int x1converted;
+    int x1len;
+    int converted;
+    char *x1;
+    char *temp;
+    char *verify;
+
+} t_dir_variables;
 
 /*
 **  argument type for function, this will be something else
@@ -158,6 +177,11 @@ int  get_index(char *s1, char *s2);
 char field_c_combos(char *dir,va_list args2);
 char  field_c(char *dir,va_list args2);
 char field_s(char *dir,va_list args2);
+char    ft_copy(char *s1, char *s2);
+char    put_spaces_before_s(char *x1, int converted, int len);
+char    put_spaces_afer_s(char *x1, int converted, int len);
+char    put_spaces_before_c(int x, int converted);
+char    put_spaces_afer_c(int x, int converted);
 
 /*
 ** star.c
@@ -198,7 +222,7 @@ int		ft_recursive_power(int nb, int power);
 char	*ft_strchr(const char *s, int c);
 int		ft_str_is_numeric(char *str);
 int		ft_atoi(const char *str);
-char	*print_x_times(int n, char c);
+char	print_x_times(int n, char c);
 int		loop_through(char *flags, char *format, int a);
 int		ft_isalpha(int c);
 int		ft_simple_atoi(const char *str);

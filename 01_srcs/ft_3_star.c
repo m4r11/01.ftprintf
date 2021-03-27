@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 15:52:37 by user              #+#    #+#             */
-/*   Updated: 2021/03/25 18:50:15 by user             ###   ########.fr       */
+/*   Updated: 2021/03/27 12:45:12 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ char star_s(char *dir, va_list args2)
     argnum = arg_number(dir);
 /*     debug_str(dir, "dir");
     debug_number(start, "start"); */
+    if (value == NULL)
+    {
+        ft_putstr("(null)");
+            return(0);
+    }
     while (dir[i])
     {
         if (dir[start + 3] == '0')
