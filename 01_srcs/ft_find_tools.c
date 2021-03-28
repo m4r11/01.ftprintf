@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 11:43:24 by user              #+#    #+#             */
-/*   Updated: 2021/03/25 12:31:00 by user             ###   ########.fr       */
+/*   Updated: 2021/03/28 13:10:25 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,14 @@ int find_first_flag(char *input)
                  while(DIR2_S[j])
                  {
                      if ((DIR2_S[j] == input[flag1_end-1]) || '%' == input[flag1_end-1])
-                         return(flag1_end + 1);
+                     {
+                        return(flag1_end + 1);
+                     }
                     j++;
                  }
              }
             i++;
+            //debug_number(i, "i");
         }
         //printf("this is the end:%d\n", flag1_end);
         flag1_end--;

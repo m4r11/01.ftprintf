@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 11:39:56 by user              #+#    #+#             */
-/*   Updated: 2021/03/27 14:47:13 by user             ###   ########.fr       */
+/*   Updated: 2021/03/28 14:14:17 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int   print_the_middle(char *input, int flag1_end)
     //printf("start : %d\n" ,start);
     end = ft_intstrchr(input, '%', start);
     //printf("end : %d\n", end);
+   // printf("flag1end : %d\n", flag1_end);
     middle = flag1_end;
     //printf("middle : %d\n", middle);
     if (middle == 0)
@@ -55,12 +56,14 @@ int   print_the_middle(char *input, int flag1_end)
             ft_putc(input[middle]);
             middle++;
     }
+    //debug_number(middle, "middle");
     return(0);
 }
 
 char	print_x_times(int n, char c)
 {
-	//debug_number(n, "convertedn");
+	if (n == 0)
+        return(0);
 	while (n > 0)
 	{
 		ft_putc(c);

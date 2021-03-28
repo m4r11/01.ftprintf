@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:49:51 by user              #+#    #+#             */
-/*   Updated: 2021/03/27 20:15:42 by user             ###   ########.fr       */
+/*   Updated: 2021/03/28 16:17:40 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ char minor_len(int len, int min_c, int width, int print)
 
 char greater_len(int len, int min_c, int width, int print)
 {
+/*     printf("ola");
+    debug_number(width, "w");
+    debug_number(min_c, "m"); */
     if (width >= 0 && print >= 0)
     {
         ft_micro_great_width_great_len(width, min_c, len);
@@ -50,6 +53,12 @@ char greater_len(int len, int min_c, int width, int print)
         ft_putc('-');
         ft_micro_great_width_great_len(width, min_c, len);
         ft_putnbr(print * -1);
+    }
+    if(width < 0 && min_c < len)
+    {
+        width *= -1;
+        ft_putnbr(print);
+        print_x_times(width - len, ' ');
     }
     else    
     {

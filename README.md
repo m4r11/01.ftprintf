@@ -5,7 +5,7 @@ New note 24.Mar.2021 on 1 month anniversary of the project 🥳 🥺 :\
 Now compiling with 'gcc main.c libftprintf.a debugs.a && ./a.out | cat -e'\
 Todo : fix implicit declaration\
 Started 24.Feb.2020 | still working on it.\
-!Validated yet: s:OK | c: OK | p:50% | d:30% | i:30 | u:10 %
+!Validated yet: s:OK | c: OK | p:OK | d:40% | i:40% | u:10 %
 
 [Subject](https://cdn.intra.42.fr/pdf/pdf/19313/en.subject.pdf)  
 

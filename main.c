@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:40:48 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/27 14:18:29 by user             ###   ########.fr       */
+/*   Updated: 2021/03/28 21:34:01 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int main()
 	ft_printf("%-10c%*c%c*\n",'0', 10, '1', '2'); */
 /* 	ft_printf("%10c\n", '0');
 	printf("%10c\n", '0'); */
-	ft_printf(" -%*c* -%-*c* \n", -2, 0, 2, 0);
-	printf(" -%*c* -%-*c* \n", -2, 0, 2, 0);
+/* 	ft_printf(" -%*c* -%-*c* \n", -2, 0, 2, 0);
+	printf(" -%*c* -%-*c* \n", -2, 0, 2, 0); */
 /* 	ft_printf("%c", '0');
 	ft_printf("\n");
 	ft_printf(" %c ", '0');
@@ -102,6 +102,52 @@ int main()
 	ft_printf("\n");
 	ft_printf(" %.d ", 0);
 	printf(" %.d \n", 0);*/
+/* 	ft_printf("******************************\n");
+	ft_printf("***         case p        ****\n");
+	ft_printf("******************************\n");
+	ft_printf("\n"); */
+/* 	ft_printf(" %-10p %10p \n", 1, -1);
+printf(" %p %p \n", 1, -1); ft_printf(" %p %p \n", 1, -1); */
+/* 	ft_printf(" %-10p %10p \n", 1, -1);
+	printf(" %-10p %10p \n", 1, -1); */
+/* 	ft_printf(" %10p %-10p \n", 0, 0);
+	printf(" %10p %-10p \n", 0, 0); */
+/* 	ft_printf(" %p %p \n", LONG_MIN, LONG_MAX);
+	printf(" %p %p \n", LONG_MIN, LONG_MAX); */
+/* 	ft_printf(" %p %p \n", ULONG_MAX, -ULONG_MAX);
+	printf(" %p %p \n", ULONG_MAX, -ULONG_MAX); */
+/* 	ft_printf(" %*p %-*p \n", -10, 101, -10, 42);
+	printf(" %*p %-*p \n", -10, 101, -10, 42); */
+/* 	ft_printf(" .-0*%*p %-*p*0-. \n", 11, 101, 11, 42);
+	printf(" .-0*%*p %-*p*0-. \n", 11, 101, 11, 42); */
+/* 	ft_printf(" %10p %10p \n", 1, -1);
+	printf(" %10p %10p \n", 1, -1); */
+/* 	ft_printf(" %10p %-10p \n", 1, -1);
+	printf(" %10p %-10p \n", 1, -1); */
+/* 	ft_printf(" %-10p %-10p \n", 1, -1);
+	printf(" %-10p %-10p \n", 1, -1); */
+/* 	ft_printf(" %10p %-10p \n", 0, 0);
+	printf(" %10p %-10p \n", 0, 0); */
+/* 	ft_printf(" %*p %-*p \n", -10, 101, -10, 42);
+	printf(" %*p %-*p \n", -10, 101, -10, 42); */
+	//printf(" %10p %10p \n", 1, -1);
+	ft_printf("******************************\n");
+	ft_printf("***         case d        ****\n");
+	ft_printf("******************************\n");
+	ft_printf("\n");
+/* 	ft_printf(" 0*%0-*.*d*0 0*%0*.*d*0 \n", 6, 2, 102, 10, 21, -101);
+	printf(" 0*%0-*.*d*0 0*%0*.*d*0 \n", 6, 2, 102, 10, 21, -101); */
+	ft_printf("\n");
+/* 	ft_printf(" 0*%0-*.*d*0 0*%0*.*d*0 \n", 2, 6, 102, 21, 10, -101);
+	printf(" 0*%0-*.*d*0 0*%0*.*d*0 \n", 2, 6, 102, 21, 10, -101); */
+/* 	ft_printf(" 0*%0-*d*0 0*%0*d*0 \n", 21, 1021, 21, -1011);
+	printf(" 0*%0-*d*0 0*%0*d*0 \n", 21, 1021, 21, -1011); */
+/* 	ft_printf(" 0*%-0*.10d*0 0*%-0*.0d*0 \n", 21, 1021, 21, -1011);
+	printf(" 0*%-0*.10d*0 0*%-0*.0d*0 \n", 21, 1021, 21, -1011); */
+/* 	ft_printf(" --0*%0*.0d*0 0*%0*.10d*0-- \n", -21, INT_MAX, 21, INT_MIN);
+	printf(" --0*%0*.0d*0 0*%0*.10d*0-- \n", -21, INT_MAX, 21, INT_MIN); */
+	ft_printf(" --0*%0*.0d*0 0*%0*.10d*0-- \n", -21, LONG_MAX, 21, LONG_MIN);
+	printf(" --0*%0*.0d*0 0*%0*.10d*0-- \n", -21, LONG_MAX, 21, LONG_MIN);
 		return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 11:14:27 by user              #+#    #+#             */
-/*   Updated: 2021/03/27 17:57:12 by user             ###   ########.fr       */
+/*   Updated: 2021/03/28 16:51:36 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 char    put_position(char *dir,va_list args2, int flag)
 {
-        ft_putstr("-");
-        return(0);
+        return(position_address(dir, args2));
 }
 char    put_sign(char *dir,va_list args2, int flag)
 {
@@ -30,7 +29,9 @@ char    put_space(char *dir,va_list args2, int flag)
 char    put_zeroes(char *dir,va_list args2, int flag)
 {
         if (flag == 8)
-                return(0);     
+                return(0);
+         if (flag == 0 || flag == 1)
+                return(put_field(dir, args2, flag));    
          return(0);
 }
 char   put_len(char *dir,va_list args2, int flag)

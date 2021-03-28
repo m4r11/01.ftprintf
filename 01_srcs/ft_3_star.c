@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 15:52:37 by user              #+#    #+#             */
-/*   Updated: 2021/03/27 20:15:24 by user             ###   ########.fr       */
+/*   Updated: 2021/03/28 14:26:50 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,8 @@ char put_star(char *dir, va_list args2, int flag)
     //debug_str(dir, "dir");
     if (flag == 8)
         return (star_s(dir, args2));
+    if (flag == 13)
+        return (position_address(dir, args2));
     if (dir[2] == '.' || dir[3] == '.')
     {
         return (precision_int_combos(dir, args2));

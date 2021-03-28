@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 13:55:42 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/24 17:58:33 by user             ###   ########.fr       */
+/*   Updated: 2021/03/27 21:49:22 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static  fptrdir get_dir[] =
     {
-        &put_star,
-        &put_position,
+        &put_star, /* handles csdi for now */
+        &put_position, /* handles hex and pointer field specs */
         &put_sign,
 		&put_sign,
         &put_zeroes,
@@ -23,28 +23,20 @@ static  fptrdir get_dir[] =
 		&put_len,
 		&put_len,
 		&put_len,
-        &put_dec_precision,
+        &put_dec_precision, /* handles csdi for field specs plus combos */
         &put_alternate,
-        &put_field,
-		&put_field,
-		&put_field,
-		&put_field,
-		&put_field,
-		&put_field,
-		&put_field,
-		&put_field,
-		&put_field,
-		&put_field,
+        &put_field, /* handles csdi for field specs */
 };
 
 char *has_formating(char *format, int n, va_list args2, int flag)
 {
- /*    debug_number(n, "n");
-    debug_str(format, "format"); */
-    //debug_str(format, "format");
     if(n == NO_FORMAT)
         return(0);
+    if (n == FIELD && flag == p)
+        return(get_dir[POSITION](format, args2, flag));
+    if (n >= FIELD)
+        return(get_dir[FIELD](format, args2, flag));
     else
-        get_dir[n](format, args2, flag);  
+        return(get_dir[n](format, args2, flag));  
     return(0);
 }

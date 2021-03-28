@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/27 20:30:59 by user             ###   ########.fr       */
+/*   Updated: 2021/03/28 16:53:53 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,14 @@ va_list args2;
 /*
 ** simplified DIR_S wihtout the space for middle_print function 
 */
-# define DIR2_S "*-+hljz.#123456789"
+# define DIR2_S "*-+0hljz.#123456789"
 
 /*
 ** enums for modularity: flags, format & size
 */
 typedef enum e_flag
 {
-	d,x,X,u,f,e,E,s,S,c,g,o,p,n,M,END_FLAG
+	d,i,x,X,u,f,e,E,s,S,c,g,o,p,n,M,END_FLAG
 }			t_flag;
 
 typedef enum e_dir 
@@ -114,6 +114,7 @@ typedef struct s_dir_variables
 	int real;
 	int start;
 	int width;
+	long *hex;
     char *x1;
     char *temp;
     char *verify;
@@ -173,6 +174,14 @@ int 	get_index(char *s1, char *s2);
 
 
 /*
+** position.c
+*/
+char    position_address(char *dir, va_list args2);
+void 	ft_put_address(char *input, long *print);
+int ft_hexlen(long *print);
+
+
+/*
 ** micro_field_tools.c
 */
 char    put_spaces_before_s(char *x1, int converted, int len);
@@ -192,6 +201,7 @@ char    ft_minor_field_star_fetch(va_list args2, int x, int converted);
 char	field_c_combos(char *dir,va_list args2);
 char	field_c(char *dir,va_list args2);
 char	field_s(char *dir,va_list args2);
+char    field_int_combos(char *dir, va_list args2);
 
 
 /*
@@ -223,6 +233,11 @@ char	precision_op(int len, int min_c, int width, int print);
 char    precision_s(char *dir,va_list args2);
 char    precision_int(char *dir,va_list args2);
 char	precision_int_combos(char *dir, va_list args2);
+
+/*
+** zero.c
+*/
+char    zero_int_combos(char *dir, va_list args2);
 
 /*
 ** ft_general_utilities.c
@@ -266,7 +281,6 @@ void ft_putnbr_rebase(int number, int baseleng);
 void ft_putnbr_base(int nbr, char *base);
 void ft_putfloat(t_type type, va_list args2);
 void ft_putnbr_limit(int nb, int x);
-
 /*
 ** parse_directives.c
 */

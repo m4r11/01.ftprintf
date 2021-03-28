@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 11:05:19 by user              #+#    #+#             */
-/*   Updated: 2021/03/23 10:52:12 by user             ###   ########.fr       */
+/*   Updated: 2021/03/28 13:08:24 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 
 # define CONV_S "dixXufeEsScgopn"
-# define DIR2_S "*-+hljz.#123456789"
+# define DIR2_S "*-+0hljz.#123456789"
 
 char ft_putc(char c)
 {
@@ -126,7 +126,7 @@ int     main()
     input = " %-4s somos %4s ";
     input2 = " %-4s  %-4s ";
     input3 = "%-10c%*c%c*";
-    input4 = " %-.9i ";
+    input4 = " %-10p %10p ";
     start = ft_intstrchr_flag(input, '%', 1);
     end =  ft_intstrchr_flag(input, '%', start);
 
