@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 20:01:13 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/29 23:16:50 by user             ###   ########.fr       */
+/*   Updated: 2021/03/30 12:00:03 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,32 @@ void ft_putnbr(int nb)
         {
             ft_putnbr(nb / 10);
             ft_putnbr(nb % 10);
+        }
+        else
+            ft_putc(nb + '0');
+    }
+    return;
+}
+
+void ft_putnbr_u(unsigned int nb)
+{
+    //debug_number(nb, "nb");
+    if (nb <= UINT_MAX)
+    {
+        if (nb == UINT_MAX)
+        {
+            ft_putc('4');
+            ft_putnbr_u(294967295);
+        }
+        else if (nb < 0)
+        {
+            ft_putc('-');
+            ft_putnbr_u(-nb);
+        }
+        else if (nb > 9)
+        {
+            ft_putnbr_u(nb / 10);
+            ft_putnbr_u(nb % 10);
         }
         else
             ft_putc(nb + '0');

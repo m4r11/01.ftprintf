@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:01:19 by user              #+#    #+#             */
-/*   Updated: 2021/03/29 23:24:10 by user             ###   ########.fr       */
+/*   Updated: 2021/03/30 16:42:14 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,20 @@ char precision_s(char *dir, va_list args2)
     return (0);
 }
 
-char precision_int_combos(char *dir, va_list args2)
+char precision_int_combos(char *dir, va_list args2, int flag)
 {
     /* this func handles the combination of field '-' star '*' precision '.' */
     static int pin;
     char to_convert[500];
     t_dir_variables dv;
 
+   //debug_number(dv.passflag, "flag");
     dv.temp = (ft_strchr(&dir[pin], '%'));
     ft_copy(dv.temp, to_convert);
     pin = ft_intstrchr(dir, '%', pin);
 
+    if(flag == 4)
+        return(precision_u_combos(dir, args2));
     int width = va_arg(args2, int);
     int min_c = va_arg(args2, int);
     int print = va_arg(args2, int);
@@ -72,11 +75,12 @@ char precision_int(char *dir, va_list args2)
     int print;
     int width;
     int start;
+    t_dir_variables dv;
 
     //printf("HELLO");
     start = ft_intstrchr_flag(dir, '%', position);
     if (dir[start + 1] == '-' && dir[start + 2] == '*' && dir[start + 3] == '.')
-        return (precision_int_combos(&dir[start], args2));
+        return (precision_int_combos(&dir[start], args2, dv.passflag));
 
     real = (ft_intstrchr(dir, '.', start));
     if(dir[real + 1] == 'u' || dir[real + 2] == 'u' )

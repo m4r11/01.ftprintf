@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 22:11:39 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/29 23:06:57 by user             ###   ########.fr       */
+/*   Updated: 2021/03/30 16:55:35 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int ft_printf(const char *format, ...)
 
 int parse(char *to_parse, int i)
 {
+	t_dir_variables dv;
+	
 	int find_dir;
 	int find_flag;
 	char *parsed = ft_strchr(to_parse, '%');
@@ -81,6 +83,7 @@ int parse(char *to_parse, int i)
 
 	find_flag = loop_through(CONV_S, to_parse, i);
 	find_dir = loop_for_directives(DIR_S, to_parse, i);
+
 /* 	debug_number(find_flag, "flag");
 	debug_number(find_dir, "dir"); */
 	has_formating(parsed, find_dir, args2, find_flag);

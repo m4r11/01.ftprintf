@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 17:20:24 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/26 12:43:01 by user             ###   ########.fr       */
+/*   Updated: 2021/03/30 15:58:08 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,33 @@ int ft_toupper(int c)
 }
 
 int ft_intlen(int n)
+{
+	int len;
+	len = 1;
+	if (n < 0)
+	{
+		len = 2;
+		n *= -1;
+		while (n > 9)
+		{
+			len++;
+			n /=10;
+		}
+		return(len);
+	}
+	else 
+	{
+		while (n > 9)
+		{
+			len++;
+			n /=10;
+		}
+		return (len);
+	}
+	return(-1);
+}
+
+int ft_u_intlen(unsigned int n)
 {
 	int len;
 	len = 1;

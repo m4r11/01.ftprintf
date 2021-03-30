@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/29 23:16:38 by user             ###   ########.fr       */
+/*   Updated: 2021/03/30 17:47:49 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ typedef struct s_dir_variables
 	int real;
 	int start;
 	int width;
+	int passflag;
 	long *hex;
     char *x1;
     char *temp;
@@ -203,6 +204,7 @@ char	field_c(char *dir,va_list args2);
 char	field_s(char *dir,va_list args2);
 char    field_int_combos(char *dir, va_list args2);
 char    field_u(char *dir, va_list args2);
+char 	field_u_combos(char *dir, va_list args2);
 char    put_spaces_before_u(int x, int converted);
 char    put_spaces_afer_u(int x, int converted);
 
@@ -236,7 +238,8 @@ char	precision_op(int len, int min_c, int width, int print);
 */
 char    precision_s(char *dir,va_list args2);
 char    precision_int(char *dir,va_list args2);
-char	precision_int_combos(char *dir, va_list args2);
+char	precision_int_combos(char *dir, va_list args2, int flag);
+char 	precision_u_combos(char *dir, va_list args2);
 
 /*
 ** zero.c
@@ -279,6 +282,7 @@ int		find_first_flag(char *input);
 int		print_the_middle(char *input, int flag1_end);
 int     find_width(char *dir, int start);
 int		ft_isdigit(int c);
+int		ft_u_intlen(unsigned int n);
 
 /*
 ** conv_numbers
@@ -290,6 +294,7 @@ void ft_putnbr_rebase(int number, int baseleng);
 void ft_putnbr_base(int nbr, char *base);
 void ft_putfloat(t_type type, va_list args2);
 void ft_putnbr_limit(int nb, int x);
+void ft_putnbr_u(unsigned int nb);
 /*
 ** parse_directives.c
 */
