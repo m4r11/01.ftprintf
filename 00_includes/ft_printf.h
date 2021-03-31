@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/31 17:21:15 by user             ###   ########.fr       */
+/*   Updated: 2021/03/31 20:54:58 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,8 +247,8 @@ char    minor_len_u(int len, int min_c, int width, int print);
 char    greater_len_u(int len, int min_c, int width, int print);
 char	precision_op_u(int len, int min_c, int width, int print);
 char 	zero_minus_star_dot_star_u(va_list args2);
-char zero_star_u(va_list args2);
-char zero_simple_star_u(va_list args2);
+char 	zero_star_u(va_list args2);
+char 	zero_simple_star_u(va_list args2);
 
 /*
 ** precision.c
@@ -313,12 +313,12 @@ int		ft_u_intlen(unsigned int n);
 */
 void ft_putnbr(int nb);
 char *ft_itoa(int n);
-bool is_base_valid(char *str);
-void ft_putnbr_rebase(int number, int baseleng);
-void ft_putnbr_base(int nbr, char *base);
 void ft_putfloat(t_type type, va_list args2);
 void ft_putnbr_limit(int nb, int x);
 void ft_putnbr_u(unsigned int nb);
+void ft_put_X(long quotient);
+void ft_put_x(long quotient);
+
 /*
 ** parse_directives.c
 */

@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:40:48 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/31 20:02:40 by user             ###   ########.fr       */
+/*   Updated: 2021/03/31 21:59:27 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,10 @@ printf(" %p %p \n", 1, -1); ft_printf(" %p %p \n", 1, -1); */
 	ft_printf(" --0*%0*.0d*0 0*%0*.10d*0-- \n", -21, INT_MAX, 21, INT_MIN); */
 /* 	printf(" --0*%0*.0d*0 0*%0*.10d*0-- \n", -21, LONG_MAX, 21, LONG_MIN);
 	ft_printf(" --0*%0*.0d*0 0*%0*.10d*0-- \n", -21, LONG_MAX, 21, LONG_MIN); */
+/* 	ft_printf("******************************\n");
+	ft_printf("***         case u        ****\n");
+	ft_printf("******************************\n");
+	ft_printf("\n"); */
 /* 	ft_printf(" %-1u \n", 0);
 	printf(" %-1u \n", 0); */
 /* 	ft_printf(" %-3.2u %10.42u \n", 1, -1);
@@ -186,8 +190,15 @@ printf(" %p %p \n", 1, -1); ft_printf(" %p %p \n", 1, -1); */
 	printf(" --0*%-0*.2u*0 0*%-0*.2u*0-- \n", -21, UINT_MAX, 21, UINT_MAX + 1); */
 /* 	ft_printf("%9.10u\n", UINT_MAX);
 	printf("%9.10u\n", UINT_MAX); */
-	ft_printf(" --0*%-0*.2u*0 0*%-0*.2u*0-- \n", -21, UINT_MAX, 21, UINT_MAX + 1);
-	printf(" --0*%-0*.2u*0 0*%-0*.2u*0-- \n", -21, UINT_MAX, 21, UINT_MAX + 1);
+/* 	ft_printf(" --0*%-0*.2u*0 0*%-0*.2u*0-- \n", -21, UINT_MAX, 21, UINT_MAX + 1);
+	printf(" --0*%-0*.2u*0 0*%-0*.2u*0-- \n", -21, UINT_MAX, 21, UINT_MAX + 1); */
+	ft_printf("******************************\n");
+	ft_printf("***         case x        ****\n");
+	ft_printf("******************************\n");
+	ft_printf("\n");
+/* 	you are at test 7 of x flag  */
+	ft_printf(" %-3.2x %10.42x \n", 1, -1);
+	printf(" %-3.2x %10.42x \n", 1, -1);
 		return (0);
 }
 
