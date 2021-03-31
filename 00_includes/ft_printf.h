@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/30 17:47:49 by user             ###   ########.fr       */
+/*   Updated: 2021/03/31 17:21:15 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,7 +179,7 @@ int 	get_index(char *s1, char *s2);
 */
 char    position_address(char *dir, va_list args2);
 void 	ft_put_address(char *input, long *print);
-int ft_hexlen(long *print);
+int		ft_hexlen(long *print);
 
 
 /*
@@ -224,14 +224,31 @@ char 	ft_micro_same_len(char *print, int width, int min_c);
 char    ft_wrong_directive(char *dir, char *print, int width, int min_c);
 char 	ft_micro_less_len(char *print, int width, int min_c);
 char    ft_micro_less_width(char *print, int width, int min_c);
+/*
+** micro_precision__utools.c
+*/
+char	ft_micro_great_width_less_print_u(int width, int min_c, int print, int len);
+char	ft_micro_great_width_great_len_u(int width, int min_c, int len);
+char	ft_print_null_u(char *print, int width, int min_c);
+char 	ft_micro_same_len_u(char *print, int width, int min_c);
+char    ft_wrong_directive_u(char *dir, char *print, int width, int min_c);
+char 	ft_micro_less_len_u(char *print, int width, int min_c);
+char    ft_micro_less_width_u(char *print, int width, int min_c);
 
 /*
 ** precision_tools.c
 */
-char zero_min_c(int len, int min_c, int width, int print);
+char	zero_min_c(int len, int min_c, int width, int print);
 char    minor_len(int len, int min_c, int width, int print);
 char    greater_len(int len, int min_c, int width, int print);
 char	precision_op(int len, int min_c, int width, int print);
+char	zero_min_c_u(int len, int min_c, int width, int print);
+char    minor_len_u(int len, int min_c, int width, int print);
+char    greater_len_u(int len, int min_c, int width, int print);
+char	precision_op_u(int len, int min_c, int width, int print);
+char 	zero_minus_star_dot_star_u(va_list args2);
+char zero_star_u(va_list args2);
+char zero_simple_star_u(va_list args2);
 
 /*
 ** precision.c
@@ -240,6 +257,7 @@ char    precision_s(char *dir,va_list args2);
 char    precision_int(char *dir,va_list args2);
 char	precision_int_combos(char *dir, va_list args2, int flag);
 char 	precision_u_combos(char *dir, va_list args2);
+char 	precision_u(char *dir, va_list args2);
 
 /*
 ** zero.c
@@ -250,6 +268,12 @@ char 	zero_star_dot_digi(va_list args2, char *to_convert);
 char	zero_star_flag(va_list args2);
 char 	zero_2digi_dot_flag(va_list args2, char *to_convert);
 char 	zero_1digit_dot_flag(va_list args2, char *to_convert);
+char    zero_u_combos(char *dir, va_list args2);
+char	zero_star_dot_star_u(va_list args2);
+char 	zero_star_dot_digi_u(va_list args2, char *to_convert);
+char	zero_star_flag_u(va_list args2);
+char 	zero_2digi_dot_flag_u(va_list args2, char *to_convert);
+char 	zero_1digit_dot_flag_u(va_list args2, char *to_convert);
 
 /*
 ** ft_general_utilities.c

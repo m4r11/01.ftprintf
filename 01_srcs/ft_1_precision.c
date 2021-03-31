@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:01:19 by user              #+#    #+#             */
-/*   Updated: 2021/03/30 16:42:14 by user             ###   ########.fr       */
+/*   Updated: 2021/03/31 19:51:55 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ char precision_int(char *dir, va_list args2)
 
     real = (ft_intstrchr(dir, '.', start));
     if(dir[real + 1] == 'u' || dir[real + 2] == 'u' )
-        return(field_combos_u(dir, args2));
+        return(field_u_combos(dir, args2));
     width = find_width(dir, start);
     min_c = ft_atoi(&dir[real + 1]);
     position += 1;
@@ -110,12 +110,13 @@ char precision_int(char *dir, va_list args2)
 
 char put_dec_precision(char *dir, va_list args2, int flag)
 {
-
     if (flag == 8 && dir[ft_intstrchr(dir, '.', 0) + 1] == '*')
         return (star_s(dir, args2));
     if (flag == 8)
         return (precision_s(dir, args2));
     if (flag == 0 || flag == 1 || flag == 13)
         return (precision_int(dir, args2));
+    if (flag == 4)
+        return(precision_u(dir, args2));
     return (0);
 }

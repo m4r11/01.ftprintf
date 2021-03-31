@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 15:42:46 by user              #+#    #+#             */
-/*   Updated: 2021/03/30 19:35:47 by user             ###   ########.fr       */
+/*   Updated: 2021/03/31 16:04:34 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ char precision_u_combos(char *dir, va_list args2)
     static int pin;
     char to_convert[500];
     t_dir_variables dv;
+   //printf("imhere");
 
     dv.temp = (ft_strchr(&dir[pin], '%')) + 1;
     ft_copy(dv.temp, to_convert);
