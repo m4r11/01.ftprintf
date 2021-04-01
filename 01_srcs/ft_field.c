@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_2_field.c                                       :+:      :+:    :+:   */
+/*   ft_field.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 17:59:38 by user              #+#    #+#             */
-/*   Updated: 2021/04/01 08:20:46 by user             ###   ########.fr       */
+/*   Updated: 2021/04/01 18:52:35 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ char put_field(char *dir, va_list args2, int flag)
     dv.temp = (ft_strchr(&dir[pin], '%') + 1);
     dv.len = ft_strlen(dv.temp);
     pin = ft_intstrchr(dir, '%', pin);
+    if (flag == 2)
+        return (field_x(dir, args2,flag));
     if (flag == 4)
         return (field_u(dir, args2));
     if (flag == 8)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/01 08:53:05 by user             ###   ########.fr       */
+/*   Updated: 2021/04/01 19:14:28 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ typedef struct s_dir_variables
 	int start;
 	int width;
 	int passflag;
-	long *hex;
+	long hex;
     char *x1;
     char *temp;
     char *verify;
@@ -143,19 +143,19 @@ typedef char (*fptrdir)(char *dir, va_list args2, int flag);
 /*
 **  conversion func's_declared 
 */
-void conv_itoa(char *input, int has_format, va_list args2);
-void conv_xtoa(char *input, int has_format, va_list args2);
-void conv_Xtoa(char *input, int has_format, va_list args2);
-void conv_uitoa(char *input, int has_format, va_list args2);
-void conv_ftoa(char *input, int has_format, va_list args2);
-void conv_fetoa(char *input, int has_format, va_list args2);
-void conv_fetoa(char *input, int has_format, va_list args2);
-void conv_dtoa(char *input, int has_format, va_list args2);
-void print_str(char *input, int has_format, va_list args2);
-void print_c(char *input, int has_format, va_list args2);
-void conv_otoa(char *input, int has_format, va_list args2);
-void print_ptr(char *input, int has_format, va_list args2);
-void print_n(char *input, int has_format, va_list args2);
+void	conv_itoa(char *input, int has_format, va_list args2);
+void	conv_xtoa(char *input, int has_format, va_list args2);
+void	conv_Xtoa(char *input, int has_format, va_list args2);
+void	conv_uitoa(char *input, int has_format, va_list args2);
+void	conv_ftoa(char *input, int has_format, va_list args2);
+void	conv_fetoa(char *input, int has_format, va_list args2);
+void	conv_fetoa(char *input, int has_format, va_list args2);
+void	conv_dtoa(char *input, int has_format, va_list args2);
+void	print_str(char *input, int has_format, va_list args2);
+void	print_c(char *input, int has_format, va_list args2);
+void	conv_otoa(char *input, int has_format, va_list args2);
+void	print_ptr(char *input, int has_format, va_list args2);
+void	print_n(char *input, int has_format, va_list args2);
 
 /*
 **  format directives func's_declared 
@@ -190,6 +190,7 @@ char    put_spaces_afer_s(char *x1, int converted, int len);
 char    put_spaces_before_c(int x, int converted);
 char    put_spaces_afer_c(int x, int converted);
 
+
 /*
 ** field_tools.c
 */
@@ -207,7 +208,6 @@ char    field_u(char *dir, va_list args2);
 char 	field_u_combos(char *dir, va_list args2);
 char    put_spaces_before_u(int x, int converted);
 char    put_spaces_afer_u(int x, int converted);
-
 
 /*
 ** star.c
@@ -251,6 +251,34 @@ char 	zero_star_u(va_list args2);
 char 	zero_simple_star_u(va_list args2);
 
 /*
+** 		xX
+*/
+char    put_spaces_before_x(long x, int converted);
+char    put_spaces_afer_x(long x, int converted);
+char	precision_op_x(int len, int min_c, int width, long print);
+char	zero_min_c_x(int len, int min_c, int width, long print);
+char    minor_len_x(int len, int min_c, int width, long print);
+char    greater_len_x(int len, int min_c, int width, long print);
+char	precision_op_x(int len, int min_c, int width, long print);
+char 	zero_minus_star_dot_star_x(va_list args2);
+char 	zero_star_x(va_list args2);
+char 	zero_simple_star_x(va_list args2);
+char	field_x(char *dir, va_list args2, int flag);
+char    field_x_combos(char *dir, va_list args2);
+char    zero_int_combos(char *dir, va_list args2);
+int		ft_xlen(long print);
+/*
+** micro_precision__utools.c
+*/
+char	ft_micro_great_width_less_print_x(int width, int min_c, long print, int len);
+char	ft_micro_great_width_great_len_x(int width, int min_c, long print, int len);
+char	ft_print_null_x(char *print, int width, int min_c);
+char 	ft_micro_same_len_x(char *print, int width, int min_c);
+char    ft_wrong_directive_x(char *dir, char *print, int width, int min_c);
+char 	ft_micro_less_len_x(char *print, int width, int min_c);
+char    ft_micro_less_width_x(char *print, int width, int min_c);
+
+/*
 ** precision.c
 */
 char    precision_s(char *dir,va_list args2);
@@ -258,6 +286,7 @@ char    precision_int(char *dir,va_list args2);
 char	precision_int_combos(char *dir, va_list args2, int flag);
 char 	precision_u_combos(char *dir, va_list args2);
 char 	precision_u(char *dir, va_list args2);
+char 	precision_x(char *dir, va_list args2);
 
 /*
 ** zero.c
@@ -311,13 +340,13 @@ int		ft_u_intlen(unsigned int n);
 /*
 ** conv_numbers
 */
-void ft_putnbr(int nb);
-char *ft_itoa(int n);
-void ft_putfloat(t_type type, va_list args2);
-void ft_putnbr_limit(int nb, int x);
-void ft_putnbr_u(unsigned int nb);
-void ft_put_X(long quotient);
-void ft_put_x(long quotient);
+void	ft_putnbr(int nb);
+char	*ft_itoa(int n);
+void	ft_putfloat(t_type type, va_list args2);
+void	ft_putnbr_limit(int nb, int x);
+void	ft_putnbr_u(unsigned int nb);
+void	ft_put_X(long print);
+void	ft_put_x(long print);
 
 /*
 ** parse_directives.c
@@ -328,14 +357,14 @@ int    loop_for_directives(char *flags, char *format, int j);
 /*
 ** ft_printf.c
 */
-int ft_printf(const char *format, ...);
-int	parse(char *to_parse, int i);
+int		ft_printf(const char *format, ...);
+int		parse(char *to_parse, int i);
 
 /* 
 **debugs
 */
-void debug_str(char *s, char *name);
-void debug_number(int i, char *name);
+void	debug_str(char *s, char *name);
+void	debug_number(int i, char *name);
 
 
 #endif

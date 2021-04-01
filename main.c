@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:40:48 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/31 21:59:27 by user             ###   ########.fr       */
+/*   Updated: 2021/04/01 19:38:22 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,8 +197,20 @@ printf(" %p %p \n", 1, -1); ft_printf(" %p %p \n", 1, -1); */
 	ft_printf("******************************\n");
 	ft_printf("\n");
 /* 	you are at test 7 of x flag  */
-	ft_printf(" %-3.2x %10.42x \n", 1, -1);
-	printf(" %-3.2x %10.42x \n", 1, -1);
+/* 	ft_printf(" %-3.2x %10.42x \n", 1, -1);
+	printf(" %-3.2x %10.42x \n", 1, -1); */
+/* 	ft_printf(" %p \n", -1);
+	printf(" %p \n", -1); */
+/* 	ft_printf(" %x \n", 0);
+	printf(" %x \n", 0); */
+/* 	ft_printf(" %-2.2x \n", 0);
+	printf(" %-2.2x \n", 0); */
+/* 	ft_printf(" %-3.2x \n", 0);
+	printf(" %-3.2x \n", 0); */
+/* 	ft_printf(" %-3.2x %10.42x \n", 0, 0);
+	printf(" %-3.2x %10.42x \n", 0, 0); */
+	ft_printf(" *%-*.*x* *%*.*x* \n", 4, 5, 10, 10, 21, -10);
+	printf(" *%-*.*x* *%*.*x* \n", 4, 5, 10, 10, 21, -10);
 		return (0);
 }
 

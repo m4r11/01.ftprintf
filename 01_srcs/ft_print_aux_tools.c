@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_tools.c                                   :+:      :+:    :+:   */
+/*   ft_print_aux_tools.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 11:39:56 by user              #+#    #+#             */
-/*   Updated: 2021/03/28 14:14:17 by user             ###   ########.fr       */
+/*   Updated: 2021/04/01 16:01:39 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char ft_putstr_limit(char *str, int limit)
+char    ft_putstr_limit(char *str, int limit)
 {
 	int i;
 	i = 0;
@@ -36,7 +36,7 @@ int		ft_putcharfrom(char *s, int start, char flag)
     return(i);
 }
 
-int   print_the_middle(char *input, int flag1_end)
+int     print_the_middle(char *input, int flag1_end)
 {
     int start;
     int middle;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_deploy_n_print.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 13:55:42 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/01 08:52:38 by user             ###   ########.fr       */
+/*   Updated: 2021/04/01 16:29:36 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ char has_formating(char *format, int n, va_list args2, int flag)
 {
     if(n == NO_FORMAT)
         return(0);
+/* s */
     if (n == FIELD && flag == p)
         return(get_dir[POSITION](format, args2, flag));
     if (n >= FIELD)

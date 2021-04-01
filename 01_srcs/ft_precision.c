@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_1_precision.c                                   :+:      :+:    :+:   */
+/*   ft_precision.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:01:19 by user              #+#    #+#             */
-/*   Updated: 2021/03/31 19:51:55 by user             ###   ########.fr       */
+/*   Updated: 2021/04/01 16:59:57 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ char precision_int(char *dir, va_list args2)
     int start;
     t_dir_variables dv;
 
-    //printf("HELLO");
     start = ft_intstrchr_flag(dir, '%', position);
     if (dir[start + 1] == '-' && dir[start + 2] == '*' && dir[start + 3] == '.')
         return (precision_int_combos(&dir[start], args2, dv.passflag));

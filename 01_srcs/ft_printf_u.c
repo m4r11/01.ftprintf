@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_u.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 08:38:53 by user              #+#    #+#             */
-/*   Updated: 2021/04/01 08:54:09 by user             ###   ########.fr       */
+/*   Updated: 2021/04/01 15:46:46 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,6 @@ char field_u_combos(char *dir, va_list args2)
     dv.len = ft_strlen(dv.temp);
     ft_copy(dv.temp, to_convert);
     pin = ft_intstrchr(dir, '%', pin);
-    //debug_str(dv.temp, "t");
     if (dv.temp[0] == '0' && dv.temp[1] == '-')
     {
         if (dv.temp[2] == '*' && dv.temp[3] == '.' && dv.temp[4] == '*')
@@ -182,10 +181,7 @@ char field_u_combos(char *dir, va_list args2)
         dv.width = va_arg(args2, int);
         dv.min_c = ft_atoi(&to_convert[4]);
         dv.x = va_arg(args2, unsigned int);
-        //debug_number(dv.width, "w");
-/*         debug_number(dv.width, "w");
-        debug_number(dv.min_c, "m");
-        ft_printf("this is u :%u", dv.x); */
+
         if (dv.width < 0 && dv.x < 0)
         {
             /*dont touch this */
@@ -255,8 +251,7 @@ char field_u_combos(char *dir, va_list args2)
         dv.min_c = ft_atoi(&to_convert[4]);
         dv.x = va_arg(args2, unsigned int);
         
-/*         debug_number(dv.width, "w");
-        debug_number(dv.min_c, "m"); */
+
         if (dv.width < 0 && dv.x < 0)
         {
             /*dont touch this */
@@ -316,7 +311,6 @@ char field_u_combos(char *dir, va_list args2)
         print_x_times(dv.width - dv.min_c , ' ');
         return(0);
     }
-
    /*  %-.2u  */
     if(dv.temp[0] == '-' && dv.temp[1] == '.')
     {

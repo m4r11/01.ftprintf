@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_precision_tools.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:49:51 by user              #+#    #+#             */
-/*   Updated: 2021/03/29 13:56:53 by user             ###   ########.fr       */
+/*   Updated: 2021/04/01 16:41:50 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,7 @@ char minor_len(int len, int min_c, int width, int print)
 
 char greater_len(int len, int min_c, int width, int print)
 {
-/*     printf("ola");
-    debug_number(width, "w");
-    debug_number(min_c, "m"); */
+
     if (width >= 0 && print >= 0)
     {
         ft_micro_great_width_great_len(width, min_c, len);
@@ -108,10 +106,6 @@ char zero_min_c(int len, int min_c, int width, int print)
 
 char precision_op(int len, int min_c, int width, int print)
 {
-/*     debug_number(len, "len");
-    debug_number(width, "w");
-    debug_number(min_c, "m");
-    debug_number(print, "p"); */
     if (min_c == 0)
         return(zero_min_c(len, min_c, width, print));
     if (len < min_c)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conv_numbers.c                                  :+:      :+:    :+:   */
+/*   ft_conversion_n_tools.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 20:01:13 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/31 20:51:08 by user             ###   ########.fr       */
+/*   Updated: 2021/04/01 17:37:40 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ char *ft_itoa(int n)
     return (str);
 }
 
-void ft_put_X(long quotient)
+/* void ft_put_X(long quotient)
 {
     long remainder;
     char *hexadecimal;
@@ -177,4 +177,4 @@ void ft_put_x(long quotient)
         ft_putc(ft_tolower(hexadecimal[j]));
     free(hexadecimal);
     return;
-}
+} */
