@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_generic_tools.c                                 :+:      :+:    :+:   */
+/*   ft_lib_tools.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 17:20:24 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/30 15:58:08 by user             ###   ########.fr       */
+/*   Updated: 2021/04/01 09:22:51 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -300,7 +300,6 @@ int	ft_isalpha(int c)
 		return (0);
 }
 
-
 int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
@@ -583,7 +582,6 @@ int   print_the_middle(char *input, int flag1_end, int start)
     return(0);
 } */
 
-
 /* char print_the_rest(char *input, int start, int end)
 {
 	t_flag f;
@@ -601,8 +599,6 @@ int   print_the_middle(char *input, int flag1_end, int start)
 	}
     return(0);
 }  */
-
-
 
 /* char	print_the_rest(char *input, int start, int end)
 {

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conv_npo.c                                      :+:      :+:    :+:   */
+/*   ft_print_no.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/24 12:00:12 by user              #+#    #+#             */
-/*   Updated: 2021/03/28 14:14:12 by user             ###   ########.fr       */
+/*   Created: 2021/04/01 08:34:39 by user              #+#    #+#             */
+/*   Updated: 2021/04/01 08:36:39 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,6 @@
 void print_n(char *input, int has_format, va_list args2)
 {
     ft_putc('n');
-}
-
-void print_ptr(char *input, int has_format, va_list args2)
-{
-    long *print;
-
-    if (has_format == -1)
-    {
-        print = va_arg(args2, long *);
-        ft_put_address(input, print);
-    }  
-    return;
 }
 
 void conv_otoa(char *input, int has_format, va_list args2)

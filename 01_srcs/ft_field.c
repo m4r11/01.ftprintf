@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 17:59:38 by user              #+#    #+#             */
-/*   Updated: 2021/03/31 11:39:36 by user             ###   ########.fr       */
+/*   Updated: 2021/04/01 08:20:46 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,6 @@
 /*
 ** dv. stands for "directives variables" stored in opaque typedef t_dir_variables in printf.h
 */
-
-char field_s(char *dir, va_list args2)
-{
-    static int pin;
-    char to_convert[500];
-    t_dir_variables dv;
-
-    dv.temp = (ft_strchr(&dir[pin], '%'));
-    dv.verify = ft_strchr(dir, '.');
-    dv.len = ft_strlen(dv.temp);
-    ft_copy(dv.temp, to_convert);
-    if (dv.verify && (ft_isdigit(dv.verify[1]) || dv.verify[1] == '-'))
-        return (precision_s(dir, args2));
-    dv.converted = ft_simple_atoi(&to_convert[pin + 1]);
-    pin = ft_intstrchr(dir, '%', pin);
-    dv.x1 = va_arg(args2, char *);
-    if (dv.x1 == NULL)
-        return (precision_s(dir, args2));
-    dv.x1converted = ft_simple_atoi(dv.x1);
-    dv.x1len = ft_intlen(dv.x1converted);
-    if (dv.verify && dv.verify[1] == 's')
-        return (print_x_times(dv.converted, ' '));
-    if (dv.temp[1] == '-')
-        return (put_spaces_afer_s(dv.x1, dv.converted, dv.x1len));
-    else
-        return (put_spaces_before_s(dv.x1, dv.converted, dv.x1len));
-    return (0);
-}
 
 char field_c_combos(char *dir, va_list args2)
 {

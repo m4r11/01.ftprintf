@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/03/31 20:54:58 by user             ###   ########.fr       */
+/*   Updated: 2021/04/01 08:53:05 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,7 +170,7 @@ char    put_dec_precision(char *dir, va_list args2, int flag);
 char    put_alternate(char *dir,va_list args2, int flag);
 char    put_field(char *dir,va_list args2, int flag);
 
-char	*has_formating(char *format, int n, va_list args2, int flag);
+char	has_formating(char *format, int n, va_list args2, int flag);
 int 	get_index(char *s1, char *s2);
 
 

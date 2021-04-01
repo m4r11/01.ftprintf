@@ -1,16 +1,61 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_3_star.c                                        :+:      :+:    :+:   */
+/*   ft_print_s.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/19 15:52:37 by user              #+#    #+#             */
-/*   Updated: 2021/03/30 15:41:11 by user             ###   ########.fr       */
+/*   Created: 2021/04/01 08:18:21 by user              #+#    #+#             */
+/*   Updated: 2021/04/01 08:25:25 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void print_str(char *input, int has_format, va_list args2)
+{
+    char *print;
+    if( has_format == -1)
+    {
+        //debug_str(input, "input")o -4 n e daqui;
+        print = va_arg(args2, char *);
+        ft_putstr(print);
+    }
+     else 
+        return ;
+}
+
+/*
+** dv. stands for "directives variables" stored in opaque typedef t_dir_variables in printf.h
+*/
+
+char field_s(char *dir, va_list args2)
+{
+    static int pin;
+    char to_convert[500];
+    t_dir_variables dv;
+
+    dv.temp = (ft_strchr(&dir[pin], '%'));
+    dv.verify = ft_strchr(dir, '.');
+    dv.len = ft_strlen(dv.temp);
+    ft_copy(dv.temp, to_convert);
+    if (dv.verify && (ft_isdigit(dv.verify[1]) || dv.verify[1] == '-'))
+        return (precision_s(dir, args2));
+    dv.converted = ft_simple_atoi(&to_convert[pin + 1]);
+    pin = ft_intstrchr(dir, '%', pin);
+    dv.x1 = va_arg(args2, char *);
+    if (dv.x1 == NULL)
+        return (precision_s(dir, args2));
+    dv.x1converted = ft_simple_atoi(dv.x1);
+    dv.x1len = ft_intlen(dv.x1converted);
+    if (dv.verify && dv.verify[1] == 's')
+        return (print_x_times(dv.converted, ' '));
+    if (dv.temp[1] == '-')
+        return (put_spaces_afer_s(dv.x1, dv.converted, dv.x1len));
+    else
+        return (put_spaces_before_s(dv.x1, dv.converted, dv.x1len));
+    return (0);
+}
 
 char star_s(char *dir, va_list args2)
 {
@@ -129,62 +174,6 @@ char star_s(char *dir, va_list args2)
             break;
         }
         i++;
-    }
-    return (0);
-}
-
-char put_star(char *dir, va_list args2, int flag)
-{
-    int x;
-    int value;
-    int argnum;
-    static int real;
-    int start = ft_intstrchr_flag(dir, '*', real);
-
-    //debug_str(dir, "dir");
-    if (flag == 8)
-        return (star_s(dir, args2));
-    if (flag == 13)
-        return (position_address(dir, args2));
-    if (dir[2] == '.' || dir[3] == '.')
-    {
-        return (precision_int_combos(dir, args2, flag));
-    }
-    if (flag == 4)
-    {
-          x = va_arg(args2, int);
-          value = va_arg(args2, unsigned int);
-          if(x < 0)
-          {
-                x *= -1;
-                ft_putnbr_u(value);
-                print_x_times(x - 1, ' ');
-            return (0);
-          }
-          if(x >= 0)
-          {
-            print_x_times(x - 1, ' ');
-            ft_putnbr_u(value);
-            return (0);
-          }
-          return(0);
-    }
-    x = va_arg(args2, int);
-    value = va_arg(args2, int);
-    argnum = arg_number(dir);
-    if ((dir[start + 1] == 'c' || dir[start + 1] == 'd' || dir[start + 1] == 'i') && x >= 0)
-    {
-        //printf("cute program here\n");
-        print_x_times(x - 1, ' ');
-        ft_putc(value);
-        return (0);
-    }
-    if ((dir[start + 1] == 'c' || dir[start + 1] == 'd' || dir[start + 1] == 'i') && x < 0)
-    {
-        x *= -1;
-        ft_putc(value);
-        print_x_times(x - 1, ' ');
-        return (0);
     }
     return (0);
 }

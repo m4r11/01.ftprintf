@@ -1,16 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_4_position.c                                    :+:      :+:    :+:   */
+/*   ft_print_p.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/27 22:52:31 by user              #+#    #+#             */
-/*   Updated: 2021/03/29 23:48:04 by user             ###   ########.fr       */
+/*   Created: 2021/03/24 12:00:12 by user              #+#    #+#             */
+/*   Updated: 2021/04/01 08:35:49 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void print_ptr(char *input, int has_format, va_list args2)
+{
+    long *print;
+
+    if (has_format == -1)
+    {
+        print = va_arg(args2, long *);
+        ft_put_address(input, print);
+    }  
+    return;
+}
 
 char position_address(char *dir, va_list args2)
 {

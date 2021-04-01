@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 16:49:55 by user              #+#    #+#             */
-/*   Updated: 2021/03/31 17:55:06 by user             ###   ########.fr       */
+/*   Updated: 2021/04/01 08:58:35 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,3 @@ char field_int_combos(char *dir, va_list args2)
     }
     return (0);
 }
-
-/*         debug_number(dv.width, "w");
-        debug_number(dv.min_c, "min_c");
-        debug_number(dv.x, "x"); */

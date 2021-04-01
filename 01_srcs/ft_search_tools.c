@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_find_tools.c                                    :+:      :+:    :+:   */
+/*   ft_search_tools.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 11:43:24 by user              #+#    #+#             */
-/*   Updated: 2021/03/28 13:10:25 by user             ###   ########.fr       */
+/*   Updated: 2021/04/01 08:49:07 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int find_first_flag(char *input)
+int     find_first_flag(char *input)
 {
     int i;
     int j;
@@ -82,4 +82,34 @@ int		ft_intstrchr(char *s, int c, int start)
 	if (c == s[i])
 		return(i);
 	return(-1);
+}
+
+int     get_index(char *s1, char *s2)
+{
+    int j;
+	int mini_index = INT_MAX;
+	int len1 = ft_strlen(s1);
+	char *start = ft_strchr(s2, '%');
+	//debug_str(start, "start");
+	int len2 = ft_strlen(start);
+	//debug_number(len1, "len1");
+	int i = 0;
+    while(i < len2)
+    {	
+		i++;
+		j = 0;
+        while(j<len1)
+        {
+			j++;
+            if(s2[i] == s1[j] && j < mini_index)
+            {
+				mini_index = j;
+                return(j);
+				break;
+            }
+        }
+    }
+	if (mini_index != j)
+		return(NO_FORMAT);
+    return(0);
 }
