@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 13:55:42 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/01 16:29:36 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/02 19:12:22 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ char    put_zeroes(char *dir,va_list args2, int flag)
 {
         if (flag == 8)
                 return(0);
+        if(flag == 2)
+                return(field_x(dir, args, flag));
         if(flag == 4)
                 return(field_u(dir, args));
          if (flag == 0 || flag == 1)

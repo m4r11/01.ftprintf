@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/01 19:14:28 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/02 18:11:52 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -267,6 +267,7 @@ char	field_x(char *dir, va_list args2, int flag);
 char    field_x_combos(char *dir, va_list args2);
 char    zero_int_combos(char *dir, va_list args2);
 int		ft_xlen(long print);
+char precision_x_combos(char *dir, va_list args2, int flag);
 /*
 ** micro_precision__utools.c
 */

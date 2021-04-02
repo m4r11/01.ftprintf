@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 22:11:39 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/01 16:29:02 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/02 15:56:14 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int parse(char *to_parse, int i)
 	find_flag = loop_through(CONV_S, to_parse, i);
 	find_dir = loop_for_directives(DIR_S, to_parse, i);
 
-/* 	debug_number(find_flag, "flag");
+/*  	debug_number(find_flag, "flag");
 	debug_number(find_dir, "dir"); */
 	has_formating(parsed, find_dir, args2, find_flag);
 	get_converter[find_flag](parsed, find_dir, args2);

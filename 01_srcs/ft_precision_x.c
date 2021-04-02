@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 17:01:00 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/01 19:36:22 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/02 15:13:31 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ char precision_op_x(int len, int min_c, int width, long print)
 {
     if (min_c == 0)
         return(zero_min_c_x(len, min_c, width, print));
-
     if (len < min_c)
         return (minor_len_x(len, min_c, width, print));
 /* til now use above */   
@@ -31,7 +30,6 @@ char precision_x_combos(char *dir, va_list args2, int flag)
     static int pin;
     char to_convert[500];
     t_dir_variables dv;
-    //ft_printf("here");
    //debug_number(dv.passflag, "flag");
     dv.temp = (ft_strchr(&dir[pin], '%'));
     ft_copy(dv.temp, to_convert);
@@ -40,15 +38,10 @@ char precision_x_combos(char *dir, va_list args2, int flag)
     int width = va_arg(args2, int);
     int min_c = va_arg(args2, int);
     long print = va_arg(args2, long);
-    int len = ft_hexlen(&print);
+    int len = ft_xlen(print);
     //debug_str(dv.temp, "temp");
     if (dv.temp[1] == '-' && width > 0)
         width *= -1;
-    /*     debug_number(width, "w");
-    debug_number(min_c, "m");
-    debug_number(print, "p");
-    debug_number(len, "len"); */
-    //debug_number(len, "len");
     precision_op_x(len, min_c, width, print);
     return (0);
 }
