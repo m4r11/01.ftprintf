@@ -3,12 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_c.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 11:54:44 by user              #+#    #+#             */
-/*   Updated: 2021/04/05 19:09:37 by user             ###   ########.fr       */
+/*   Updated: 2021/04/06 19:24:42 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*On this file: once a flag is found, is redirected through the array
+** of function pointers ->here<- if 's' flag. 
+** @21 treats NULL string.
+** @48 treats padding on the left if width is >= 0
+** @72 treats padding on the right if width is < 0
+** @90 takes control after print_str, to pipe down correct formating option
+** @112 core drive for 's' flag. this i sthe first function to receive operative
+** control after parse function in printf.c call the get_converter[func array]
+*/
 
 #include "ft_printf.h"
 
