@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 21:26:13 by user              #+#    #+#             */
-/*   Updated: 2021/04/04 22:07:50 by user             ###   ########.fr       */
+/*   Updated: 2021/04/05 11:35:50 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int ft_xlen(long print)
             hexadecimal[j++] = 55 + remainder;
         quotient = quotient / 16;
     }
-    return (ft_strlen(hexadecimal));
+    return (ft_is_hex(hexadecimal));
 }
 
 int		ft_is_hex(char *str)

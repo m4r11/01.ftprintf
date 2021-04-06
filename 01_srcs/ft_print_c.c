@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 11:54:44 by user              #+#    #+#             */
-/*   Updated: 2021/04/04 14:29:16 by user             ###   ########.fr       */
+/*   Updated: 2021/04/05 19:09:37 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int format_c(int print, int to_pad, int min_c, int zero)
     return (0);
 }
 
-void print_c(char *input, int index, int has_format, va_list args2)
+int print_c(char *input, int index, int has_format, va_list args2)
 {
     int q;
     int width;
@@ -109,6 +109,7 @@ void print_c(char *input, int index, int has_format, va_list args2)
     {
         q = va_arg(args2, int);
         ft_putc(q);
+        return(ft_intstrchr_flag(input, 'c', index));
     }
     else
     {
@@ -116,7 +117,7 @@ void print_c(char *input, int index, int has_format, va_list args2)
         min_c = find_precision(input, ft_intstrchr(input, '.', index), args2);
         q = va_arg(args2, int);
         format_c(q, width, min_c, zero);
-        return;
+        return(ft_intstrchr_flag(input, 'c', index));
     }
-    return;
+    return(FAIL);
 }

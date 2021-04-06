@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 17:53:40 by user              #+#    #+#             */
-/*   Updated: 2021/04/04 21:46:17 by user             ###   ########.fr       */
+/*   Updated: 2021/04/06 09:21:15 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,12 @@
 int    loop_through(char *flags, char *format, int j)
 {
     int i;
-
     if (format[j + 1] == 'i')
         return(1);
-
     if(format[j + 1] == '%')
         return(15);
     while(format[j] != END_DIR)
     {
-        //debug_str(&format[j], "format");
         if (format[j] == CONV_S[f])
             j+=1;
         i = 0;
@@ -45,19 +42,14 @@ int    loop_through(char *flags, char *format, int j)
       /*       debug_number(i, "i");
             debug_number(j, "j"); */
     }
-return(-1);
+return(-3);
 }
 
 int    loop_for_directives(char *flags, char *format, int j)
 {
-    int i;
-    char found;
     char *start = (ft_strchr(&format[j], '%') + 1);
     //debug_str(start, "start");
     int argnum;
-    int f;
-    f = 0;
-    argnum = arg_number(format);
     
     if(start[0] == '*')
         return(STAR);
@@ -77,25 +69,8 @@ int    loop_for_directives(char *flags, char *format, int j)
         return(PRECISION);
     if(start[0] == '#')
         return(ALTERNATE);
-    if(start[0] == '1')
-        return(FIELD);
-    if(start[0] == '2')
-        return(FIELD);
-    if(start[0] == '3')
-        return(FIELD);
-    if(start[0] == '4')
-        return(FIELD);
-    if(start[0] == '5')
-        return(FIELD);
-    if(start[0] == '6')
-        return(FIELD);
-    if(start[0] == '7')
-        return(FIELD);
-    if(start[0] == '8')
-        return(FIELD);
-    if(start[0] == '9')
+    if(ft_isdigit(start[0]))
         return(FIELD);
     else 
         return(-1);
-    return(0);
 }

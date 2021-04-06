@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 08:38:53 by user              #+#    #+#             */
-/*   Updated: 2021/04/04 16:36:45 by user             ###   ########.fr       */
+/*   Updated: 2021/04/06 11:14:15 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,18 @@ static int type_print(unsigned int print, int to_pad, int min_c, int size, int z
     {
         if (min_c > to_pad)
             to_pad = min_c;
-        if (min_c == 0 && zero != -1)
+        if (min_c == 0 && zero == 1)
         {
-            print_x_times(to_pad - ft_u_intlen(print), '0');
+            if (print == 0)
+            {
+                print_x_times(to_pad, ' ');
+                 return(0);
+            }
+            print_x_times(to_pad - ft_u_intlen(print), ' ');
             ft_putnbr_u_up(print, min_c);
             return (0);
         }
-        if (min_c == 0 && zero == -1)
+        if (min_c == 0 && zero == -3)
         {
             if (print == 0)
             {
@@ -35,7 +40,7 @@ static int type_print(unsigned int print, int to_pad, int min_c, int size, int z
             ft_putnbr_u_up(print, min_c);
             return (0);
         }
-        if(min_c == -1 && zero != -1)
+        if(min_c == -1 && zero == 1)
         {
             print_x_times((to_pad ) - ft_u_intlen(print), '0');
             ft_putnbr_u_up(print, min_c);
@@ -43,7 +48,6 @@ static int type_print(unsigned int print, int to_pad, int min_c, int size, int z
         }
         if (to_pad > min_c)
         {
-            //ft_printf("here");
             if(min_c < ft_u_intlen(print))
                 print_x_times(to_pad - ft_u_intlen(print), ' ');
             else 
@@ -95,32 +99,29 @@ static int type_print(unsigned int print, int to_pad, int min_c, int size, int z
     return (0);
 }
 
-void conv_uitoa(char *input, int index, int has_format, va_list args2)
+int conv_uitoa(char *input, int index, int has_format, va_list args2)
 {
     /* unsigned int x; */
     unsigned int a;
     int width;
     int min_c;
-    int dot = ft_intstrchr(input, '.', index);
-    int zero = ft_intstrchr(input, '0', index);
-    if(dot != -1 || ((dot +=1) == zero))
-        zero = -1;
+    int zero;
     if (has_format == -1)
     {
         a = va_arg(args2, unsigned int);
         ft_putnbr(a);
+        return(ft_intstrchr_flag(input, 'u', index));
     }
     else
     {
         width = find_width(input, index, args2);
-        //debug_number(width, "w");
         min_c = find_precision(input, ft_intstrchr(input, '.', index), args2);
-        //debug_number(min_c, "m");
+        zero = ft_zerochr(input, index);
         a = va_arg(args2, unsigned int);
         type_print(a, width, min_c, ft_u_intlen(a), zero);
-        return;
+        return(ft_intstrchr_flag(input, 'u', index));
     }
-    return;
+    return(FAIL);
 }
 
 void ft_putnbr_u_up(unsigned nb, int min_c)

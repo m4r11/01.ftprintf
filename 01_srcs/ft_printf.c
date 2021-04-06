@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 22:11:39 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/04 22:25:51 by user             ###   ########.fr       */
+/*   Updated: 2021/04/06 09:54:54 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static fptrconv get_converter[] =
 	{
-		&conv_itoa,
+		&conv_dtoa,
 		&conv_itoa,
 		&conv_xtoa,
 		&conv_Xtoa,
@@ -32,50 +32,31 @@ static fptrconv get_converter[] =
 		&print_percent,
 };
 
+int print_string(char *s, int c, int start)
+{
+	while (s[start] != c && s[start] != '\0')
+	{
+		ft_putc(s[start]);
+		start++;
+	}
+	if (s[start] == c)
+		return (start);
+	else
+		return (END);
+}
+
 int ft_printf(const char *format, ...)
 {
 	t_struct v;
 	t_type type;
 	va_start(args, format);
 	va_copy(args2, args);
-	int argnum;
+	static int i;
 
 	v.temp = ft_strdup(format);
-	int flag;
-	char *midle_print;
-
-	v.i = 0;
-	while (v.temp[v.i])
-	{
-		if (v.temp[v.i] == '%')
-		{
-			flag = parse(v.temp, v.i);
-			while (ft_intstrchr(v.temp, '%', v.i) != -1)
-			{
-				if (flag == 15)
-				{
-					while (v.temp[v.i + 1] != '%' && v.i <= ft_strlen(v.temp))
-					{
-						ft_putc(v.temp[v.i + 1]);
-						v.i += 1;
-					}
-				}
-				else
-					print_the_middle(v.temp, find_first_flag(v.temp));
-				v.i = ft_intstrchr(v.temp, '%', v.i);
-				flag = parse(v.temp, v.i);
-			}
-			//debug_number(v.i, "i");
-			if (flag == 15 && v.temp[v.i + 1] != '%' && v.temp[v.i + 1] != '\0')
-				ft_putc(v.temp[v.i + 1]);
-			v.i = ft_putcharfrom(v.temp, v.i, flag);
-			if (v.i == END)
-				break;
-		}
-		else
-			ft_putc(v.temp[v.i]);
-		v.i++;
-	}
+	while (i != END)
+		i = parse(v.temp, print_string(v.temp, '%', i));
+	
 	va_end(args);
 	free(v.temp);
 	return (counter(0));
@@ -84,18 +65,22 @@ int ft_printf(const char *format, ...)
 int parse(char *to_parse, int i)
 {
 	t_dir_variables dv;
-
 	int find_dir;
 	int find_flag;
-	char *parsed = ft_strchr(to_parse, '%');
-	int len = ft_strlen(to_parse);
-	static int percent;
-	percent = i;
+	if (i == END)
+		return (END);
 	find_flag = loop_through(CONV_S, to_parse, i);
+	//debug_number(find_flag, "f");
 	find_dir = loop_for_directives(DIR_S, to_parse, i);
-	percent = ft_intstrchr_flag(to_parse, '%', percent);
-	get_converter[find_flag](to_parse, percent, find_dir, args2);
-	return (find_flag);
+	//debug_number(find_dir, "dir");
+	//debug_number(i, "i");
+	i = get_converter[find_flag](to_parse, i, find_dir, args2)  + 1;
+	//debug_number(i, "RESULT OF GET CONVERTED");
+	//debug_number(ft_strlen(to_parse), "len");
+	if (i == END_STRING || i == END)
+		return (END);
+	else
+		return (i);
 }
 
 /* 

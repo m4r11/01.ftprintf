@@ -6,19 +6,20 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 08:34:39 by user              #+#    #+#             */
-/*   Updated: 2021/04/03 20:36:35 by user             ###   ########.fr       */
+/*   Updated: 2021/04/05 19:15:07 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void print_n(char *input,int index, int has_format, va_list args2)
+int print_n(char *input,int index, int has_format, va_list args2)
 {
     ft_putc('n');
+    return(ft_intstrchr_flag(input, 'n', index));
 }
 
-void conv_otoa(char *input, int index,int has_format, va_list args2)
+int conv_otoa(char *input, int index,int has_format, va_list args2)
 {
     ft_putc('8');
-return ;
+    return(ft_intstrchr_flag(input, '0', index));
 }

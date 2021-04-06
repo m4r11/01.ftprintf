@@ -6,19 +6,18 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 18:18:24 by user              #+#    #+#             */
-/*   Updated: 2021/04/04 22:17:09 by user             ###   ########.fr       */
+/*   Updated: 2021/04/06 09:43:02 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void print_percent(char *input, int index, int has_format, va_list args2)
+int print_percent(char *input, int index, int has_format, va_list args2)
 {
     static int count;
 
-    count += 1;
- 
-    if (input[index] == '%' && count % 2 == 0)
+    if (input[index + 1] == '%' /* && count % 2 == 0 */)
         ft_putc('%');
-    return;
+    count += 1;
+    return(ft_intstrchr(input, '%', index));
 }

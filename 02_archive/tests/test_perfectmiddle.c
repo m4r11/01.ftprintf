@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 11:05:19 by user              #+#    #+#             */
-/*   Updated: 2021/03/28 13:08:24 by user             ###   ########.fr       */
+/*   Updated: 2021/04/05 15:26:38 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,52 +56,38 @@ int		ft_intstrchr(char *s, int c, int start)
 	return(-1);
 }
 
-int find_first_flag(char *input)
+int find_flag_end(char *input, int flag)
 {
     int i;
     int j;
-    int flag1_end;
+    int flag_end;
     int percent1;
     int percent2;
+    static int pin;
 
-    percent1 = ft_intstrchr_flag(input, '%', 0);
-    percent2 =  ft_intstrchr(input, '%', percent1);
-    flag1_end = percent2;
-    while(input[flag1_end])
+    percent1 = ft_intstrchr(input, '%', pin);
+    percent2 =  ft_intstrchr_flag(input, '%', percent1);
+    flag_end = percent2;
+    while (input[flag_end] != CONV_S[flag])
     {
-        i = 0;
-        while (CONV_S[i])
-        {
-             if(CONV_S[i] == input[flag1_end])
-             {
-                 j = 0;
-                 while(DIR2_S[j])
-                 {
-                     if ((DIR2_S[j] == input[flag1_end-1]) || '%' == input[flag1_end-1])
-                         return(flag1_end + 1);
-                    j++;
-                 }
-             }
-            i++;
-        }
-        //printf("this is the end:%d\n", flag1_end);
-        flag1_end--;
+        flag_end--;
+        if(input[flag_end] == CONV_S[flag])
+            return(flag_end);
     }
-    return(0);
+    pin = percent1;
+    return(-5);
 }
 
-int   print_the_middle(char *input, int flag1_end)
+int   print_the_middle(char *input, int flag1_end, int flag)
 {
     int start;
     int middle;
     int end;
+    static int pin;
 
-    start = ft_intstrchr_flag(input, '%', 0);
-    //printf("start : %d\n" ,start);
+    start = ft_intstrchr(input, CONV_S[8], pin);
     end = ft_intstrchr(input, '%', start);
-    //printf("end : %d\n", end);
     middle = flag1_end;
-    //printf("middle : %d\n", middle);
     if (middle == 0)
         return(0);
     while(input[middle] != input[end])
@@ -109,6 +95,7 @@ int   print_the_middle(char *input, int flag1_end)
             ft_putc(input[middle]);
             middle++;
     }
+    pin = start;
     return(0);
 }
 
@@ -126,9 +113,7 @@ int     main()
     input = " %-4s somos %4s ";
     input2 = " %-4s  %-4s ";
     input3 = "%-10c%*c%c*";
-    input4 = " %-10p %10p ";
-    start = ft_intstrchr_flag(input, '%', 1);
-    end =  ft_intstrchr_flag(input, '%', start);
+    input4 = "%%*.s%10.4s*%ss\n";
 
   /*   printf("start: %d\n", start);
     printf("end: %d\n", end);
@@ -140,8 +125,14 @@ int     main()
     ft_putc('\n');
     print_the_middle(input3, find_first_flag(input3), 0);
     ft_putc('\n'); */
-    print_the_middle(input4, find_first_flag(input4));
+ i = 0;
+   while(input4[i] != '\0')
+   {
+       print_the_middle(input4, 8);
+       i++;
+   }
+   return(0);
     //ft_putc('\n');
-
-    //printf("%d\n", print_the_rest(s, start, 7));
+/*     printf(" this is find_first_flag:%d\n", find_first_flag(input4));
+    printf(" this is find_first_flag:%d\n", find_first_flag(input4)); */
 }

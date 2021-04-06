@@ -6,13 +6,13 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 11:57:54 by user              #+#    #+#             */
-/*   Updated: 2021/04/03 20:36:19 by user             ###   ########.fr       */
+/*   Updated: 2021/04/05 19:14:36 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void conv_ftoa(char *input,int index, int has_format, va_list args2)
+int conv_ftoa(char *input,int index, int has_format, va_list args2)
 {
     double f;
     signed long int decipart;
@@ -31,9 +31,11 @@ void conv_ftoa(char *input,int index, int has_format, va_list args2)
     f *= 1000000;                          //upto 6 decimal points
     decipart = (signed long int)(f + 0.5); //+0.5 to round of the value
     ft_putnbr(decipart);
+
+    return(ft_intstrchr_flag(input, 'f', index));
 }
 
-void conv_fetoa(char *input,int index, int has_format, va_list args2)
+int conv_fetoa(char *input,int index, int has_format, va_list args2)
 {
     double f;
     signed long int decipart;
@@ -53,4 +55,5 @@ void conv_fetoa(char *input,int index, int has_format, va_list args2)
     decipart = (signed long int)(f + 0.5); //+0.5 to round of the value
     ft_putnbr(decipart);
     ft_putstr("e+");
+    return(ft_intstrchr_flag(input, 'e', index));
 }

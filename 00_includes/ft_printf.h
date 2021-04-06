@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/04 20:26:22 by user             ###   ########.fr       */
+/*   Updated: 2021/04/06 10:33:10 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,11 @@
 # include <string.h>
 
 # define NO_FORMAT -1
-# define FOUND 
+# define FAIL -7
 # define LETTER 1
 # define END -3
+# define END_STRING -2
+
 
 va_list args;
 va_list args2;
@@ -97,6 +99,13 @@ typedef struct s_struct
 	void *kind;
 } t_struct;
 
+typedef struct s_type
+{
+	int nbr;
+	void *kind;
+	char *str;
+} t_type;
+
 /*
 ** struct for "directives" variables 
 */
@@ -106,17 +115,14 @@ typedef struct s_dir_variables
     int j;
     int len;
 	int x;
-    int x1converted;
-    int x1len;
-    int converted;
-	int new;
+	int has_zero;
+	int dot;
+	int q;
 	int min_c;
-	int real;
 	int start;
-	int width;
-	int passflag;
+	int to_pad;
+	int flag;
 	long hex;
-    char *x1;
     char *temp;
     char *verify;
 	char *print;
@@ -127,19 +133,13 @@ typedef struct s_dir_variables
 **  argument type for function, this will be something else
 ** 	it's juts a placeholder in function, can del this now
 */
-typedef struct s_type
-{
-	int nbr;
-	void *kind;
-	char *str;
-} t_type;
-
-void ft_put_x_up(long print, int min_c, int width);
+int		ft_zerochr(char *, int start);
+int     print_string(char *s, int c, int start);
 int		ft_is_hex(char *str);
-/* int type_print(long print, int to_pad, int min_c, int size); */
 int     find_precision(char *dir, int start, va_list args2);
-void ft_put_address_up(long print, int min_c, int flag);
-void ft_putnbr_up(int print, int min_c);
+
+/* s */
+
 int find_width_c(char *dir, int start, va_list args2);
 int pad_right_c(int print, int to_pad, int min_c, int zero);
 int pad_left_c(int print, int to_pad, int min_c, int zero);
@@ -149,6 +149,7 @@ int format_c(int print, int to_pad, int min_c, int zero);
 
 int pad_left_ints(int print, int to_pad, int min_c, int zero);
 int pad_right_ints(int print, int to_pad, int min_c, int zero);
+void ft_putnbr_up(int print, int min_c);
 
 /* s */
 int format_string(char *print, int to_pad, int min_c,int zero);
@@ -162,13 +163,15 @@ int find_width_p(char *dir, int start, va_list args2);
 int format_address(long print, int to_pad, int min_c, int zero);
 int pad_left_p(long print, int to_pad, int min_c, int zero);
 int pad_right_p(long print, int to_pad, int min_c, int zero);
+void ft_put_address_up(long print, int min_c, int flag);
 
 /* u */
 
 void ft_putnbr_u_up(unsigned nb, int min_c);
 
 /* x */
-int format_x(long print, int to_pad, int min_c, int zero);
+int format_x(t_dir_variables var);
+void ft_put_x_up(long print, int min_c, int width);
 
 /* X */
 
@@ -177,30 +180,35 @@ int format_X(long print, int to_pad, int min_c, int zero);
 /*
 **  function * type def for conversion
 */
-typedef void (*fptrconv)(char *input,  int index, int has_format, va_list args2);
+
+typedef int (*fptrconv)(char *input,  int index, int has_format, va_list args2);
 typedef char (*fptrdir)(char *dir, va_list args2, int flag);
 
 /*
-**  conversion func's_declared 
+**  printing type pointer func's_declared 
+**  typedef void (*fptrconv)(char *input,  int index, int has_format, va_list args2);
 */
-void	conv_itoa(char *input, int index, int has_format, va_list args2);
-void	conv_xtoa(char *input, int index,  int has_format, va_list args2);
-void	conv_Xtoa(char *input,  int index, int has_format, va_list args2);
-void	conv_uitoa(char *input, int index,  int has_format, va_list args2);
-void	conv_ftoa(char *input,  int index, int has_format, va_list args2);
-void	conv_fetoa(char *input,  int index, int has_format, va_list args2);
-void	conv_fetoa(char *input, int index, int has_format, va_list args2);
-void	conv_dtoa(char *input, int index,  int has_format, va_list args2);
-void	print_str(char *input, int index,  int has_format, va_list args2);
-void	print_c(char *input,  int index, int has_format, va_list args2);
-void	conv_otoa(char *input,  int index, int has_format, va_list args2);
-void	print_ptr(char *input, int index,  int has_format, va_list args2);
-void	print_n(char *input,  int index, int has_format, va_list args2);
-void	print_percent(char *input,  int index, int has_format, va_list args2);
+
+int	conv_itoa(char *input, int index, int has_format, va_list args2);
+int	conv_dtoa(char *input, int index, int has_format, va_list args2);
+int	conv_xtoa(char *input, int index,  int has_format, va_list args2);
+int	conv_Xtoa(char *input,  int index, int has_format, va_list args2);
+int	conv_uitoa(char *input, int index,  int has_format, va_list args2);
+int	conv_ftoa(char *input,  int index, int has_format, va_list args2);
+int	conv_fetoa(char *input,  int index, int has_format, va_list args2);
+int	conv_fetoa(char *input, int index, int has_format, va_list args2);
+int	conv_dtoa(char *input, int index,  int has_format, va_list args2);
+int	print_str(char *input, int index,  int has_format, va_list args2);
+int	print_c(char *input,  int index, int has_format, va_list args2);
+int	conv_otoa(char *input,  int index, int has_format, va_list args2);
+int	print_ptr(char *input, int index,  int has_format, va_list args2);
+int	print_n(char *input,  int index, int has_format, va_list args2);
+int	print_percent(char *input,  int index, int has_format, va_list args2);
 
 /*
 **  format directives func's_declared 
 */
+
 char    put_star(char *dir, va_list args2, int flag);
 char   	put_position(char *dir, va_list args2, int flag);
 char    put_sign(char *dir, va_list args2, int flag);
@@ -210,7 +218,6 @@ char    put_len(char *dir, va_list args2, int flag);
 char    put_dec_precision(char *dir, va_list args2, int flag);
 char    put_alternate(char *dir,va_list args2, int flag);
 char    put_field(char *dir,va_list args2, int flag);
-
 char	has_formating(char *format, int n, va_list args2, int flag);
 int 	get_index(char *s1, char *s2);
 
@@ -308,7 +315,7 @@ char	field_x(char *dir, va_list args2, int flag);
 char    field_x_combos(char *dir, va_list args2);
 char    zero_int_combos(char *dir, va_list args2);
 int		ft_xlen(long print);
-char precision_x_combos(char *dir, va_list args2, int flag);
+char    precision_x_combos(char *dir, va_list args2, int flag);
 /*
 ** micro_precision__utools.c
 */
@@ -374,7 +381,7 @@ int		ft_intstrchr(char *s, int c, int start);
 int		ft_putcharfrom(char *s, int start, char flag);
 int		ft_intstrchr_flag(char *s, int c, int start);
 int		find_first_flag(char *input);
-int		print_the_middle(char *input, int flag1_end);
+int		print_the_middle(char *input, int flag1_end, char flag);
 int     find_width(char *dir, int start, va_list args2);
 int		ft_isdigit(int c);
 int		ft_u_intlen(unsigned int n);
@@ -387,8 +394,7 @@ char	*ft_itoa(int n);
 void	ft_putfloat(t_type type, va_list args2);
 void	ft_putnbr_limit(int nb, int x);
 void	ft_putnbr_u(unsigned int nb);
-void	ft_put_X(long print);
-void	ft_put_x(long print);
+void	ft_put_x(long print, int flag);
 
 /*
 ** parse_directives.c

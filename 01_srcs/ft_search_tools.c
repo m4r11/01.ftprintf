@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 11:43:24 by user              #+#    #+#             */
-/*   Updated: 2021/04/04 15:15:09 by user             ###   ########.fr       */
+/*   Updated: 2021/04/06 10:57:12 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ int find_first_flag(char *input)
     int flag1_end;
     int percent1;
     int percent2;
+    static int pin;
 
-    percent1 = ft_intstrchr_flag(input, '%', 0);
+    percent1 = ft_intstrchr_flag(input, '%', pin);
     percent2 = ft_intstrchr(input, '%', percent1);
     flag1_end = percent2;
     while (input[flag1_end])
@@ -46,7 +47,8 @@ int find_first_flag(char *input)
         //printf("this is the end:%d\n", flag1_end);
         flag1_end--;
     }
-    return (0);
+    pin = percent1;
+    return (END);
 }
 
 int find_width(char *dir, int start, va_list args2)
@@ -102,7 +104,7 @@ int find_width_c(char *dir, int start, va_list args2)
         }
         if (dir[start] == '*')
         {
-            if  ((dir[start - 2] == '%' && dir[start - 1] == '-') || dir[start - 3] == '%' && dir[start - 2] == '-')
+            if  ((dir[start - 2] == '%' && dir[start - 1] == '-') || (dir[start - 3] == '%' && dir[start - 2] == '-'))
             {
                 width = va_arg(args2, int);
                 if (width > 0)
@@ -137,7 +139,7 @@ int find_width_p(char *dir, int start, va_list args2)
         }
         if (dir[start] == '*')
         {
-            if  ((dir[start - 2] == '%' && dir[start - 1] == '-') || dir[start - 3] == '%' && dir[start - 2] == '-')
+            if  ((dir[start - 2] == '%' && dir[start - 1] == '-') || (dir[start - 3] == '%' && dir[start - 2] == '-'))
             {
                 width = va_arg(args2, int);
                 if (width > 0)
@@ -163,7 +165,7 @@ int find_precision(char *dir, int start, va_list args2)
         return (format = (ft_simple_atoi(&dir[start + 1])));
     if (dir[start] == '*' || dir[start + 1] == '*')
         return (format = va_arg(args2, int));
-    return (0);
+    return (-1);
 }
 
 int ft_intstrchr_flag(char *s, int c, int start)
@@ -174,7 +176,7 @@ int ft_intstrchr_flag(char *s, int c, int start)
         i++;
     if (c == s[i])
         return (i);
-    return (-1);
+    return (END);
 }
 
 int ft_intstrchr(char *s, int c, int start)
@@ -187,7 +189,15 @@ int ft_intstrchr(char *s, int c, int start)
         i++;
     if (c == s[i])
         return (i);
-    return (-1);
+    return (END);
+}
+
+int ft_zerochr(char *s, int start)
+{
+    if(s[start + 1] == '0')
+        return (1);
+    else
+        return (END);
 }
 
 int get_index(char *s1, char *s2)
