@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 22:49:12 by user              #+#    #+#             */
-/*   Updated: 2021/04/06 11:01:53 by user             ###   ########.fr       */
+/*   Updated: 2021/04/08 00:49:54 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int pad_left_ints(int print, int to_pad, int min_c, int zero)
             print_x_times(to_pad, ' ');
             return (0);
         }
-        print_x_times(to_pad - 1, ' ');
+        print_x_times(to_pad - ft_intlen(print), ' ');
         ft_putnbr_up(print, min_c);
         return (0);
     }
@@ -57,8 +57,11 @@ int pad_left_ints(int print, int to_pad, int min_c, int zero)
     }
     if(zero == 1)
     {
-        if(print < 0)
+      if (print < 0 && ft_intlen(print) < min_c)
             to_pad -= 1;
+        if(min_c < ft_intlen(print))
+            print_x_times(to_pad - ft_intlen(print), ' ');
+        if(min_c >= ft_intlen(print))
         print_x_times(to_pad - min_c, ' ');
         ft_putnbr_up(print, min_c);
         return(0);
@@ -68,12 +71,16 @@ int pad_left_ints(int print, int to_pad, int min_c, int zero)
         ft_putnbr_up(print, min_c);
         return (0);
     }
-    if (to_pad > 0 && min_c < to_pad && min_c > 0)
+    if (min_c < to_pad && min_c > 0)
     {
-        if (print < 0)
-            print_x_times(to_pad - min_c - 1, ' ');
-        else
+        if (print < 0 && ft_intlen(print) < min_c)
+            to_pad -= 1;
+        if (print == 0)
             print_x_times(to_pad - min_c, ' ');
+       if(min_c < ft_intlen(print) && print != 0)
+                print_x_times(to_pad - ft_intlen(print), ' ');
+        if(min_c > ft_intlen(print) && print != 0)
+                print_x_times(to_pad - min_c, ' ');
         /*             if(print == 0)
                 return(0); */
         ft_putnbr_up(print, min_c);

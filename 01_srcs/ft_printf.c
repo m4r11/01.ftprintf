@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 22:11:39 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/06 09:54:54 by user             ###   ########.fr       */
+/*   Updated: 2021/04/07 23:44:29 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ int ft_printf(const char *format, ...)
 	t_type type;
 	va_start(args, format);
 	va_copy(args2, args);
-	static int i;
+	int i;
 
+	i = 0;
 	v.temp = ft_strdup(format);
 	while (i != END)
-		i = parse(v.temp, print_string(v.temp, '%', i));
-	
+		i = parse(v.temp, print_string(v.temp, '%', i));	
 	va_end(args);
 	free(v.temp);
 	return (counter(0));

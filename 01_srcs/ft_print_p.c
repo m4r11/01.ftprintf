@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 12:00:12 by user              #+#    #+#             */
-/*   Updated: 2021/04/05 19:15:51 by user             ###   ########.fr       */
+/*   Updated: 2021/04/07 23:38:29 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,8 @@ int format_address(long print, int to_pad, int min_c, int zero)
         return (pad_right_p(print, to_pad, min_c, zero));
     if (to_pad == 0 && min_c > 0)
         ft_put_address_up(print, min_c, to_pad);
+    if (to_pad == 0 && min_c < 0)
+        ft_put_address_up(print, min_c, to_pad);
     else
         return (0);
     return (0);
@@ -131,7 +133,7 @@ int print_ptr(char *input, int index, int has_format, va_list args2)
     {
         width = find_width_p(input, index, args2);
         min_c = find_precision(input, ft_intstrchr(input, '.', index), args2);
-        q = va_arg(args2, int);
+        q = va_arg(args2, long);
         format_address(q, width, min_c, zero);
         return(ft_intstrchr_flag(input, 'p', index));
     }
@@ -192,7 +194,7 @@ void ft_put_address_up(long print, int min_c, int flag)
         quotient = quotient / 16;
     }
     len = ft_is_hex(hexadecimal);
-    if (min_c > 0 && print != 0)
+    if (min_c >= 0 && print != 0)
     {
         if (ft_intlen(print) == 1)
             print_x_times(min_c - 1, '0');

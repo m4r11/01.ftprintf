@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 11:43:24 by user              #+#    #+#             */
-/*   Updated: 2021/04/06 10:57:12 by user             ###   ########.fr       */
+/*   Updated: 2021/04/08 00:11:13 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,12 @@ int find_width_c(char *dir, int start, va_list args2)
                 return (width = va_arg(args2, int));
         }
         if (ft_isdigit(dir[start]) == 1 && &dir[start] != 0)
-            return (width = ft_simple_atoi(&dir[start]));
+        {
+            if(dir[start - 2] == '-')
+                return (width = ft_simple_atoi(&dir[start]) * -1);
+            else
+                return (width = ft_simple_atoi(&dir[start]));
+        }
     }
     return(0);
 }

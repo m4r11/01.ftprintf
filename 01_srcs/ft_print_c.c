@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_c.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 11:54:44 by user              #+#    #+#             */
-/*   Updated: 2021/04/06 19:51:40 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/08 00:08:05 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,14 @@
 
 #include "ft_printf.h"
 
-int pad_right_c(int print, int to_pad, int min_c, int zero)
+int pad_left_c(int print, int to_pad, int min_c, int zero)
 {
+    if (zero == 1)
+    {
+        print_x_times(to_pad - 1, '0');
+        ft_putc(print);
+        return (0);
+    }
     if (min_c == 0)
     {
         print_x_times(to_pad - 1, ' ');
@@ -46,7 +52,7 @@ int pad_right_c(int print, int to_pad, int min_c, int zero)
         if (min_c == -1)
             print_x_times(to_pad - 1, ' ');
         else
-            print_x_times(to_pad - min_c, ' ');
+            print_x_times(to_pad - 1, ' ');
         ft_putc(print);
         return (0);
     }
@@ -57,7 +63,7 @@ int pad_right_c(int print, int to_pad, int min_c, int zero)
     return (0);
 }
 
-int pad_left_c(int print, int to_pad, int min_c, int zero)
+int pad_right_c(int print, int to_pad, int min_c, int zero)
 {
     if (min_c == 0 && print != 0)
     {
@@ -96,9 +102,9 @@ int pad_left_c(int print, int to_pad, int min_c, int zero)
 int format_c(int print, int to_pad, int min_c, int zero)
 {
     if (to_pad > 0)
-        return (pad_right_c(print, to_pad, min_c, zero));
+        return (pad_left_c(print, to_pad, min_c, zero));
     if (to_pad < 0)
-        return(pad_left_c(print, to_pad, min_c, zero));
+        return (pad_right_c(print, to_pad, min_c, zero));
     if (to_pad == 0 && min_c > 0)
         ft_putc(print);
     if (to_pad == 0 && min_c <= 0) // && print == '0')
@@ -118,15 +124,16 @@ int print_c(char *input, int index, int has_format, va_list args2)
     {
         q = va_arg(args2, int);
         ft_putc(q);
-        return(ft_intstrchr_flag(input, 'c', index));
+        return (ft_intstrchr_flag(input, 'c', index));
     }
     else
     {
         width = find_width_c(input, index, args2);
+        //debug_number(width, "w");
         min_c = find_precision(input, ft_intstrchr(input, '.', index), args2);
         q = va_arg(args2, int);
         format_c(q, width, min_c, zero);
-        return(ft_intstrchr_flag(input, 'c', index));
+        return (ft_intstrchr_flag(input, 'c', index));
     }
-    return(FAIL);
+    return (FAIL);
 }
