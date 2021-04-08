@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 08:38:53 by user              #+#    #+#             */
-/*   Updated: 2021/04/06 11:14:15 by user             ###   ########.fr       */
+/*   Updated: 2021/04/08 10:32:03 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,9 @@ static int type_print(unsigned int print, int to_pad, int min_c, int size, int z
         print_x_times((to_pad * -1) - min_c, ' ');
         return (0);
     }
-    if (to_pad == 0 && min_c == 0 && print != 0)
+    if (to_pad == 0 && min_c <= 0 && print != 0)
+        ft_putnbr_u_up(print, min_c);
+    if (to_pad == 0 && min_c < 0 && print == 0)
         ft_putnbr_u_up(print, min_c);
     if (to_pad == 0 && min_c > 0)
         ft_putnbr_u_up(print, min_c);
@@ -109,13 +111,15 @@ int conv_uitoa(char *input, int index, int has_format, va_list args2)
     if (has_format == -1)
     {
         a = va_arg(args2, unsigned int);
-        ft_putnbr(a);
+        ft_putnbr_u(a);
         return(ft_intstrchr_flag(input, 'u', index));
     }
     else
     {
         width = find_width(input, index, args2);
         min_c = find_precision(input, ft_intstrchr(input, '.', index), args2);
+        //debug_number(width, "w");
+        //debug_number(min_c, "m");
         zero = ft_zerochr(input, index);
         a = va_arg(args2, unsigned int);
         type_print(a, width, min_c, ft_u_intlen(a), zero);

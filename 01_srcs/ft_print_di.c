@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 22:49:12 by user              #+#    #+#             */
-/*   Updated: 2021/04/08 00:49:54 by user             ###   ########.fr       */
+/*   Updated: 2021/04/08 15:19:38 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,18 @@ int pad_left_ints(int print, int to_pad, int min_c, int zero)
         }
         return (0);
     }
-    if(zero == 1)
+    if (zero == 1)
     {
-      if (print < 0 && ft_intlen(print) < min_c)
-            to_pad -= 1;
-        if(min_c < ft_intlen(print))
-            print_x_times(to_pad - ft_intlen(print), ' ');
-        if(min_c >= ft_intlen(print))
-        print_x_times(to_pad - min_c, ' ');
-        ft_putnbr_up(print, min_c);
-        return(0);
+        {
+            if (print < 0 && ft_intlen(print) <= min_c)
+                to_pad -= 1;
+            if (min_c < ft_intlen(print))
+                print_x_times(to_pad - ft_intlen(print), ' ');
+            if (min_c >= ft_intlen(print))
+                print_x_times(to_pad - min_c, ' ');
+            ft_putnbr_up(print, min_c);
+            return (0);
+        }
     }
     if (to_pad <= min_c)
     {
@@ -73,16 +75,33 @@ int pad_left_ints(int print, int to_pad, int min_c, int zero)
     }
     if (min_c < to_pad && min_c > 0)
     {
-        if (print < 0 && ft_intlen(print) < min_c)
-            to_pad -= 1;
         if (print == 0)
+        {
             print_x_times(to_pad - min_c, ' ');
-       if(min_c < ft_intlen(print) && print != 0)
-                print_x_times(to_pad - ft_intlen(print), ' ');
-        if(min_c > ft_intlen(print) && print != 0)
+            ft_putnbr_up(print, min_c);
+            return (0);
+        }
+        if (min_c < ft_intlen(print))
+        {
+            if (print < 0 && ft_intlen(print) < min_c)
+                to_pad -= 1;
+            print_x_times(to_pad - ft_intlen(print), ' ');
+            ft_putnbr_up(print, min_c);
+            return (0);
+        }
+        if (min_c < ft_intlen(print) && print > 0)
+        {
+            print_x_times(to_pad - ft_intlen(print), ' ');
+            ft_putnbr_up(print, min_c);
+            return (0);
+        }
+        else
+        {
+            if (print < 0)
+                print_x_times(to_pad - min_c - 1, ' ');
+            else
                 print_x_times(to_pad - min_c, ' ');
-        /*             if(print == 0)
-                return(0); */
+        }
         ft_putnbr_up(print, min_c);
         return (0);
     }
@@ -106,7 +125,6 @@ int pad_left_ints(int print, int to_pad, int min_c, int zero)
 
 int pad_right_ints(int print, int to_pad, int min_c, int zero)
 {
-
     if (min_c == 0 && print != 0)
     {
         ft_putnbr_up(print, min_c);
@@ -164,22 +182,27 @@ int conv_itoa(char *input, int index, int has_format, va_list args2)
     int width;
     int min_c;
     int zero;
+
+    width = 0;
     if (has_format == -1)
     {
         x = va_arg(args2, signed int);
         ft_putnbr(x);
-        return(ft_intstrchr_flag(input, 'i', index));
+        return (ft_intstrchr_flag(input, 'i', index));
     }
     else
     {
-        width = find_width(input, index, args2);
+        width = find_width_d(input, index, args2);
         min_c = find_precision(input, ft_intstrchr(input, '.', index), args2);
         zero = ft_zerochr(input, index);
+        /*         debug_number(width, "w");
+        debug_number(min_c, "m");
+        debug_number(zero, "z"); */
         x = va_arg(args2, int);
         format_ints(x, width, min_c, zero);
-        return(ft_intstrchr_flag(input, 'i', index));
+        return (ft_intstrchr_flag(input, 'i', index));
     }
-    return(FAIL);
+    return (FAIL);
 }
 
 int conv_dtoa(char *input, int index, int has_format, va_list args2)
@@ -193,21 +216,21 @@ int conv_dtoa(char *input, int index, int has_format, va_list args2)
     {
         x = va_arg(args2, signed int);
         ft_putnbr(x);
-        return(ft_intstrchr_flag(input, 'd', index));
+        return (ft_intstrchr_flag(input, 'd', index));
     }
     else
     {
         width = find_width(input, index, args2);
         min_c = find_precision(input, ft_intstrchr(input, '.', index), args2);
         zero = ft_zerochr(input, index);
-/*         debug_number(width, "w");
+        /*         debug_number(zero, "z");
         debug_number(min_c, "m");
-        debug_number(zero, "zero"); */
+        debug_number(width, "w"); */
         x = va_arg(args2, int);
         format_ints(x, width, min_c, zero);
-        return(ft_intstrchr_flag(input, 'd', index));
+        return (ft_intstrchr_flag(input, 'd', index));
     }
-    return(FAIL);
+    return (FAIL);
 }
 
 void ft_putnbr_up(int print, int min_c)

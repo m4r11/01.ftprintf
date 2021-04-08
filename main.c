@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:40:48 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/08 00:49:14 by user             ###   ########.fr       */
+/*   Updated: 2021/04/08 15:16:54 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -241,9 +241,10 @@ printf(" %p %p \n", 1, -1); ft_printf(" %p %p \n", 1, -1); */
 	static char *s_hidden = "hi low\0don't print me lol\0";
 	static char *test;
 	//ft_printf("%-70p\n", &a01);
-	ft_printf("%08.3d\n", -8473);
-	printf("%08.3d\n", -8473);
-/* 	ft_printf("%.*p\n", -3, &test);
+	r1 = ft_printf("%.*i\n", 6, -3);
+	r2 = printf("%.*i\n", 6, -3);
+/*
+ft_printf("%.*p\n", -3, &test);
 	printf("%.*p\n", -3, &test); */
 	/* 	you are at test 7 of x flag  */
 	/* 	ft_printf(" *%-*.*X* *%*.*X* \n", 4, 5, 10, 10, 21, -10);

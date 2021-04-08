@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 11:43:24 by user              #+#    #+#             */
-/*   Updated: 2021/04/08 00:11:13 by user             ###   ########.fr       */
+/*   Updated: 2021/04/08 15:14:39 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,14 @@ int find_first_flag(char *input)
     return (END);
 }
 
-int find_width(char *dir, int start, va_list args2)
+int find_width_d(char *dir, int start, va_list args2)
 {
     int width;
     if (start == -1)
         return (0);
     width = 0;
-    while (dir[start++] != '.')
+    while ((dir[start++] && dir[start] != '.' )|| dir[start] != '\0')
     {
- //debug_str(&dir[start], "width");
         if (dir[start] == '0')
             start += 1;
         if (dir[start] == '-' && dir[start + 1] != '*')
@@ -69,21 +68,72 @@ int find_width(char *dir, int start, va_list args2)
         }
         if (dir[start] == '*')
         {
-            if ((dir[start - 1] == '%') || (dir[start - 2] == '%' && dir[start - 1] == '-') || dir[start - 3] == '%')
+            if (((dir[start - 2] == '%' && dir[start - 1] == '-') ||
+             (dir[start - 3] == '%' && dir[start - 2] == '-') ||
+             dir[start - 1] == '-'))
             {
+
                 width = va_arg(args2, int);
                 if (width > 0)
-                    return(-1 * width);
+                    return (-1 * width);
                 else
-                    return(width);
+                    return (width);
             }
             else
                 return (width = va_arg(args2, int));
         }
         if (ft_isdigit(dir[start]) == 1 && &dir[start] != 0)
-            return (width = ft_simple_atoi(&dir[start]));
+        {
+            if (dir[start - 2] == '-')
+                return (width = ft_simple_atoi(&dir[start]) * -1);
+            else
+                return (width = ft_simple_atoi(&dir[start]));
+        }
     }
-    return(0);
+    
+    return (0);
+}
+
+int find_width(char *dir, int start, va_list args2)
+{
+    int width;
+    if (start == -1)
+        return (0);
+    width = 0;
+    while (dir[start++] != '.')
+    {
+        if (dir[start] == '0')
+            start += 1;
+        if (dir[start] == '-' && dir[start + 1] != '*')
+        {
+            if (dir[start + 1] != '0')
+                return (width = (ft_simple_atoi(&dir[start + 1]) * -1));
+        }
+        if (dir[start] == '*')
+        {
+            if (((dir[start - 2] == '%' && dir[start - 1] == '-') ||
+             (dir[start - 3] == '%' && dir[start - 2] == '-') ||
+             dir[start - 1] == '-'))
+            {
+
+                width = va_arg(args2, int);
+                if (width > 0)
+                    return (-1 * width);
+                else
+                    return (width);
+            }
+            else
+                return (width = va_arg(args2, int));
+        }
+        if (ft_isdigit(dir[start]) == 1 && &dir[start] != 0)
+        {
+            if (dir[start - 2] == '-')
+                return (width = ft_simple_atoi(&dir[start]) * -1);
+            else
+                return (width = ft_simple_atoi(&dir[start]));
+        }
+    }
+    return (0);
 }
 
 int find_width_c(char *dir, int start, va_list args2)
@@ -94,7 +144,7 @@ int find_width_c(char *dir, int start, va_list args2)
     width = 0;
     while (dir[start++] != '.')
     {
- //debug_str(&dir[start], "width");
+        //debug_str(&dir[start], "width");
         if (dir[start] == '0')
             start += 1;
         if (dir[start] == '-' && dir[start + 1] != '*')
@@ -104,26 +154,26 @@ int find_width_c(char *dir, int start, va_list args2)
         }
         if (dir[start] == '*')
         {
-            if  ((dir[start - 2] == '%' && dir[start - 1] == '-') || (dir[start - 3] == '%' && dir[start - 2] == '-'))
+            if ((dir[start - 2] == '%' && dir[start - 1] == '-') || (dir[start - 3] == '%' && dir[start - 2] == '-'))
             {
                 width = va_arg(args2, int);
                 if (width > 0)
-                    return(-1 * width);
+                    return (-1 * width);
                 else
-                    return(width);
+                    return (width);
             }
             else
                 return (width = va_arg(args2, int));
         }
         if (ft_isdigit(dir[start]) == 1 && &dir[start] != 0)
         {
-            if(dir[start - 2] == '-')
+            if (dir[start - 2] == '-')
                 return (width = ft_simple_atoi(&dir[start]) * -1);
             else
                 return (width = ft_simple_atoi(&dir[start]));
         }
     }
-    return(0);
+    return (0);
 }
 
 int find_width_p(char *dir, int start, va_list args2)
@@ -134,7 +184,7 @@ int find_width_p(char *dir, int start, va_list args2)
     width = 0;
     while (dir[start++] != '.')
     {
-    //debug_str(&dir[start], "width");
+        //debug_str(&dir[start], "width");
         if (dir[start] == '0')
             start += 1;
         if (dir[start] == '-' && dir[start + 1] != '*')
@@ -144,13 +194,13 @@ int find_width_p(char *dir, int start, va_list args2)
         }
         if (dir[start] == '*')
         {
-            if  ((dir[start - 2] == '%' && dir[start - 1] == '-') || (dir[start - 3] == '%' && dir[start - 2] == '-'))
+            if ((dir[start - 2] == '%' && dir[start - 1] == '-') || (dir[start - 3] == '%' && dir[start - 2] == '-'))
             {
                 width = va_arg(args2, int);
                 if (width > 0)
-                    return(-1 * width);
+                    return (-1 * width);
                 else
-                    return(width);
+                    return (width);
             }
             else
                 return (width = va_arg(args2, int));
@@ -158,7 +208,7 @@ int find_width_p(char *dir, int start, va_list args2)
         if (ft_isdigit(dir[start]) == 1 && &dir[start] != 0)
             return (width = ft_simple_atoi(&dir[start]));
     }
-    return(0);
+    return (0);
 }
 
 int find_precision(char *dir, int start, va_list args2)
@@ -199,7 +249,7 @@ int ft_intstrchr(char *s, int c, int start)
 
 int ft_zerochr(char *s, int start)
 {
-    if(s[start + 1] == '0')
+    if (s[start + 1] == '0')
         return (1);
     else
         return (END);

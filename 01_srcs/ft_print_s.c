@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_s.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 08:18:21 by user              #+#    #+#             */
-/*   Updated: 2021/04/06 19:24:14 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/08 15:01:31 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,11 @@ int	format_string(char *print, int to_pad, int min_c, int zero)
 		return (pad_right_s(print, to_pad, min_c, zero));
 	if (to_pad == 0 && min_c == 0)
 		return (0);
+	if (to_pad == 0 && min_c < 0)
+	{
+		 ft_putstr(print);
+		return (0);
+	}
 	if (to_pad == 0 && min_c <= ft_strlen(print))
 		return (ft_putstr_limit(print, min_c));
 	if (to_pad == 0 && min_c > 0)

@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 10:45:41 by user              #+#    #+#             */
-/*   Updated: 2021/04/05 11:34:51 by user             ###   ########.fr       */
+/*   Updated: 2021/04/08 12:17:01 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void ft_put_x(long print, int flag)
     int j = 0;
     if (print == LONG_MIN || print == ULONG_MAX)
     {
-        if(flag == 3)
+        if (flag == 3)
             longmin = "FFFFFFFF";
-        if(flag == 2)
+        if (flag == 2)
             longmin = "ffffffff";
         ft_putstr(longmin);
         return;
@@ -46,14 +46,13 @@ void ft_put_x(long print, int flag)
     }
     while (j-- > 0)
     {
-        if(flag == 3)
+        if (flag == 3)
             ft_putc(hexadecimal[j]);
-        if(flag == 2)
+        if (flag == 2)
             ft_putc(ft_tolower(hexadecimal[j]));
     }
     return;
 }
-
 
 void ft_put_x_up(long print, int min_c, int flag)
 {
@@ -65,9 +64,9 @@ void ft_put_x_up(long print, int min_c, int flag)
     int j = 0;
     if (print == ULONG_MAX || print == LONG_MIN)
     {
-        if(flag == 3)
+        if (flag == 3)
             ulongmax = "FFFFFFFF";
-        if(flag == 2)
+        if (flag == 2)
             ulongmax = "ffffffff";
         if (min_c > 0)
             print_x_times(min_c - (ft_strlen(ulongmax)), '0');
@@ -81,6 +80,13 @@ void ft_put_x_up(long print, int min_c, int flag)
             print_x_times(min_c - 1, '0');
         return;
     }
+/*     if (print == 10)
+    {
+        if (min_c > 0 && print == 10)
+            print_x_times(min_c - 1, '0');
+        ft_putc('a');
+        return;
+    } */
     quotient = print;
     while (quotient != 0)
     {
@@ -101,6 +107,7 @@ void ft_put_x_up(long print, int min_c, int flag)
         else
             print_x_times(min_c - ft_xlen(print), '0');
     }
+    //debug_str(hexadecimal, "he");
     while (j-- > 0)
     {
         if (flag == 2)

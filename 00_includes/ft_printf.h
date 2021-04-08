@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/06 18:16:51 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/08 15:14:53 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,7 @@ typedef struct s_dir_variables
 **   new funcs to organize per type
 */
 
+int find_width_d(char *dir, int start, va_list args2);
 int put_string_pad_right_limit(char *print, int to_pad, int min_c);
 int put_string_pad_left(char *print, int to_pad);
 int put_string_pad_right(char *print, int to_pad);

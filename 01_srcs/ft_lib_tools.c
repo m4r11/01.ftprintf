@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 17:20:24 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/01 09:22:51 by user             ###   ########.fr       */
+/*   Updated: 2021/04/08 12:40:21 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,7 +181,7 @@ char *ft_strdup(const char *s1)
 
 int counter(int n)
 {
-	static int res = 0;
+	static int res;
 
 	res += n;
 	return(res);

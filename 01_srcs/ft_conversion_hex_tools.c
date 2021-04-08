@@ -6,7 +6,7 @@
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 21:26:13 by user              #+#    #+#             */
-/*   Updated: 2021/04/05 11:35:50 by user             ###   ########.fr       */
+/*   Updated: 2021/04/08 13:41:28 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,8 @@ int ft_xlen(long print)
             hexadecimal[j++] = 55 + remainder;
         quotient = quotient / 16;
     }
+/*     debug_number(ft_is_hex(hexadecimal), "hex string len");
+    debug_str(hexadecimal, "HEXADECIMAL"); */
     return (ft_is_hex(hexadecimal));
 }
 
@@ -124,9 +126,11 @@ int		ft_is_hex(char *str)
     c = 0;
 	while (str[i] != '\0')
 	{
-		if (((str[i] >= 'A' && str[i] <= 'F' ) || (str[i] >= '0' && str[i] <= '9')))
+		if(!(((str[i] >= 'A' && str[i] <= 'F' ) || (str[i] >= '0' && str[i] <= '9'))))
+            break;
+        else
             c++;
-        i++;
+            i++;
 	}
 	return (c);
 }
