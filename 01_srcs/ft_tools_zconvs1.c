@@ -1,16 +1,99 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tools_x.c                                       :+:      :+:    :+:   */
+/*   ft_tools_zconvs.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/05 10:45:41 by user              #+#    #+#             */
-/*   Updated: 2021/04/09 10:10:09 by user             ###   ########.fr       */
+/*   Created: 2021/03/05 20:01:13 by mvaldeta          #+#    #+#             */
+/*   Updated: 2021/04/09 14:03:34 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void ft_putnbr(int nb)
+{
+    //debug_number(nb, "nb");
+    if (nb <= INT_MAX && nb >= INT_MIN)
+    {
+        if (nb == INT_MIN)
+        {
+            ft_putc('-');
+            ft_putc('2');
+            ft_putnbr(147483648);
+        }
+        else if (nb < 0)
+        {
+            ft_putc('-');
+            ft_putnbr(-nb);
+        }
+        else if (nb > 9)
+        {
+            ft_putnbr(nb / 10);
+            ft_putnbr(nb % 10);
+        }
+        else
+            ft_putc(nb + '0');
+    }
+    return;
+}
+
+void ft_putnbr_u(unsigned int nb)
+{
+    if (nb <= UINT_MAX)
+    {
+        if (nb == UINT_MAX)
+        {
+            ft_putc('4');
+            ft_putc('2');
+            ft_putnbr(94967295);
+            return ;
+        }
+
+        else if (nb < 0)
+        {
+            ft_putc('-');
+            ft_putnbr_u(-nb);
+        }
+        else if (nb > 9)
+        {
+            ft_putnbr_u(nb / 10);
+            ft_putnbr_u(nb % 10);
+        }
+        else
+            ft_putc(nb + '0');
+    }
+    return;
+}
+
+void ft_putnbr_u_up(unsigned nb, int min_c)
+{
+    char *uintmax;
+
+    if (nb < 0)
+        nb = UINT_MAX;
+    if (nb <= UINT_MAX)
+    {
+        if (nb == UINT_MAX)
+        {
+            uintmax = "4294967295";
+            if (min_c > 0)
+                print_x_times(min_c - ft_strlen(uintmax), '0');
+            ft_putstr(uintmax);
+            return;
+        }
+            print_x_times(min_c -ft_u_intlen(nb), '0');
+        if (nb > 9)
+        {
+            ft_putnbr_u(nb / 10);
+            ft_putnbr_u(nb % 10);
+        }
+        else
+            ft_putc(nb + '0');
+    }
+    return;
+}
 
 void ft_put_x(long print, int flag)
 {
@@ -80,7 +163,7 @@ void ft_put_x_up(long print, int min_c, int flag)
             print_x_times(min_c - 1, '0');
         return;
     }
-/*     if (print == 10)
+    /*     if (print == 10)
     {
         if (min_c > 0 && print == 10)
             print_x_times(min_c - 1, '0');

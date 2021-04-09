@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 15:40:48 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/08 23:46:07 by user             ###   ########.fr       */
+/*   Updated: 2021/04/09 18:46:51 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,9 +242,13 @@ printf(" %p %p \n", 1, -1); ft_printf(" %p %p \n", 1, -1); */
 	//ft_printf("%-70p\n", &a01);
 /* 	static char *a01;
 	char *test; */
-	static char *test;
-	r1 = ft_printf("%p\n", &test);
-	r2 = printf("%p\n", &test);
+	//static char *test;
+/* 	r1 = ft_printf("%7p\n", &test);
+	r2 = printf("%7p\n", &test); */
+	r1 = ft_printf("%03x\n", 0);
+	r2 = printf("%03x\n", 0);
+/* 	r1 = ft_printf("%70p\n", &test);
+	r2 = printf("%70p\n", &test); */
 /* 	r1 = ft_printf("%7p\n", &test);
 	r2 = printf("%7p\n", &test); */
 /*

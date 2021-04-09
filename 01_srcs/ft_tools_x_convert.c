@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conversion_hex_tools.c                          :+:      :+:    :+:   */
+/*   ft_tools_x_convert.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 21:26:13 by user              #+#    #+#             */
-/*   Updated: 2021/04/09 00:17:36 by user             ###   ########.fr       */
+/*   Updated: 2021/04/09 17:59:48 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_put_address(long print)
+void ft_put_address(long long print)
 {
    /*  long decimal; */
     long quotient;
@@ -45,6 +45,8 @@ void ft_put_address(long print)
         ft_putc('0');
     while (quotient != 0)
     {
+     /*      debug_str(hexadecimal, "h");
+        debug_number(quotient, "q"); */
         remainder = quotient % 16;
         if (remainder < 10)
             hexadecimal[j++] = 48 + remainder;

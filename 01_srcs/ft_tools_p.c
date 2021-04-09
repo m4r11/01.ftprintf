@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_p_tools.c                                 :+:      :+:    :+:   */
+/*   ft_tools_p.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 21:29:21 by user              #+#    #+#             */
-/*   Updated: 2021/04/08 23:46:08 by user             ###   ########.fr       */
+/*   Updated: 2021/04/09 18:07:31 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_pad_left_no_zero_p(int print, int to_pad, int min_c)
+int ft_pad_left_no_zero_p(long long print, int to_pad, int min_c)
 {
     if (print == 0)
     {
@@ -25,7 +25,7 @@ int ft_pad_left_no_zero_p(int print, int to_pad, int min_c)
     return (0);
 }
 
-int ft_pad_left_big_pad_p(int print, int to_pad, int min_c)
+int ft_pad_left_big_pad_p(long long print, int to_pad, int min_c)
 {
     if (print == 0)
     {
@@ -44,7 +44,7 @@ int ft_pad_left_big_pad_p(int print, int to_pad, int min_c)
     return (0);
 }
 
-int ft_pad_right_nominc_p(int print, int to_pad, int min_c)
+int ft_pad_right_nominc_p(long long print, int to_pad, int min_c)
 {
     if (print == 0 || print == 1)
     {
@@ -63,7 +63,7 @@ int ft_pad_right_nominc_p(int print, int to_pad, int min_c)
     return (0);
 }
 
-int ft_edge_cases_p(long print, int min_c)
+int ft_edge_cases_p(long long print, int min_c)
 {
     char *longmin;
     if (print == 0)
@@ -73,13 +73,13 @@ int ft_edge_cases_p(long print, int min_c)
             print_x_times(min_c - 3, '0');
         return(0);
     }
-/*     if (print == 1)
+    if (print == 1)
     {
         ft_putstr("1");
         if (min_c > 0 && print == 0)
             print_x_times(min_c - 3, '0');
         return(0);
-    } */
+    }
     if (print == LONG_MIN)
     {
         longmin = "8000000000000000";
@@ -92,7 +92,7 @@ int ft_edge_cases_p(long print, int min_c)
     return(0);
 }
 
-void ft_min_c(long print, int min_c, int len)
+void ft_min_c(long long print, int min_c, int len)
 {
         if (ft_intlen(print) == 1)
             print_x_times(min_c - 1, '0');

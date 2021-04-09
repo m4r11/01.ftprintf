@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
+/*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:57:25 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/09 00:11:13 by user             ###   ########.fr       */
+/*   Updated: 2021/04/09 18:02:07 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,23 +102,23 @@ typedef enum e_dir
 */
 typedef struct s_struct
 {
-	char *str;
-	char *temp;
-	char *next;
-	int n;
-	char id;
-	int i;
-	int j;
-	int c;
-	int nbr;
-	void *kind;
+	char	*str;
+	char	*temp;
+	char	*next;
+	char	id;
+	int		n;
+	int		i;
+	int		j;
+	int		c;
+	int		nbr;
+	void	*kind;
 } t_struct;
 
 typedef struct s_type
 {
-	int nbr;
-	void *kind;
-	char *str;
+	int		nbr;
+	void	*kind;
+	char	*str;
 } t_type;
 
 /*
@@ -126,22 +126,23 @@ typedef struct s_type
 */
 typedef struct s_dir_variables
 {
-	int i;
-	int j;
-	int len;
-	int x;
-	int has_zero;
-	int dot;
-	int q;
-	long l;
-	int min_c;
-	int start;
-	int to_pad;
-	int flag;
-	long hex;
-	char *temp;
-	char *verify;
-	char *print;
+	int		i;
+	int		j;
+	int		len;
+	int		x;
+	int		has_zero;
+	int		dot;
+	int		q;
+	int		min_c;
+	int		min;
+	int		start;
+	int		to_pad;
+	int		flag;
+	long	l;
+	long	hex;
+	char	*temp;
+	char	*verify;
+	char	*print;
 
 } t_dir_variables;
 
@@ -149,18 +150,18 @@ typedef struct s_dir_variables
 **   new funcs to organize per type
 */
 
-int find_width_d(char *dir, int start, va_list args2);
-int put_string_pad_right_limit(char *print, int to_pad, int min_c);
-int put_string_pad_left(char *print, int to_pad);
-int put_string_pad_right(char *print, int to_pad);
-int put_string_pad_left_limit(char *print, int to_pad, int min_c);
-int ft_zerochr(char *, int start);
-int print_string(char *s, int c, int start);
-int ft_is_hex(char *str);
-int find_precision(char *dir, int start, va_list args2);
+int		find_width_d(char *dir, int start, va_list args2);
+int		put_string_pad_right_limit(char *print, int to_pad, int min_c);
+int		put_string_pad_left(char *print, int to_pad);
+int		put_string_pad_right(char *print, int to_pad);
+int		put_string_pad_left_limit(char *print, int to_pad, int min_c);
+int		ft_zerochr(char *, int start);
+int		print_string(char *s, int c, int start);
+int		ft_is_hex(char *str);
+int		find_precision(char *dir, int start, va_list args2);
 
 /* c */
-
+int		print_c(char *input, int i, int has_format, va_list args2);
 int    ft_pad_left_printc_after_zero(int print, int to_pad);
 int    ft_pad_left_printc_after(int print, int to_pad);
 int    ft_printc_pad_right(int print, int to_pad);
@@ -168,55 +169,67 @@ int    ft_printc_pad_right(int print, int to_pad);
 
 /* s */
 
-int find_width_c(char *dir, int start, va_list args2);
-int pad_right_c(int print, int to_pad, int min_c);
-int pad_left_c(int print, int to_pad, int min_c, int zero);
-int format_c(int print, int to_pad, int min_c, int zero);
+int		find_width_c(char *dir, int start, va_list args2);
+int		pad_right_c(int print, int to_pad, int min_c);
+int		pad_left_c(int print, int to_pad, int min_c, int zero);
+int		format_c(int print, int to_pad, int min_c, int zero);
 
 /* di */
-int    ft_pad_right(int print, int to_pad, int min_c);
-int    ft_pad_left_no_min_no_zero(int print, int to_pad, int min_c);
-int    ft_pad_left_no_min_zero(int print, int to_pad, int min_c);
-int    ft_pad_left_minor_min(int print, int to_pad, int min_c);
-int    ft_pad_left_bigger_pad(int print, int to_pad, int min_c);
-int    ft_pad_left_putnbr_min(int print, int to_pad, int min_c);
-int    ft_pad_left_putnbr_zero(int print, int to_pad, int min_c);
-int    ft_pad_left_putnbr(int print, int to_pad, int min_c);
-int pad_left_ints(int print, int to_pad, int min_c, int zero);
-int pad_right_ints(int print, int to_pad, int min_c, int zero);
-void ft_putnbr_up(int print, int min_c);
+int		ft_pad_right(int print, int to_pad, int min_c);
+int		ft_pad_left_no_min_no_zero(int print, int to_pad, int min_c);
+int		ft_pad_left_no_min_zero(int print, int to_pad, int min_c);
+int		ft_pad_left_minor_min(int print, int to_pad, int min_c);
+int		ft_pad_left_bigger_pad(int print, int to_pad, int min_c);
+int		ft_pad_left_putnbr_min(int print, int to_pad, int min_c);
+int		ft_pad_left_putnbr_zero(int print, int to_pad, int min_c);
+int		ft_pad_left_putnbr(int print, int to_pad, int min_c);
+int		pad_left_ints(int print, int to_pad, int min_c, int zero);
+int 	pad_right_ints(int print, int to_pad, int min_c, int zero);
+void 	ft_putnbr_up(int print, int min_c);
 
 /* s */
-int format_string(char *print, int to_pad, int min_c, int zero);
-int null_string(char *print, int to_pad, int min_c);
-int pad_left_s(char *print, int to_pad, int min_c);
-int pad_right_s(char *print, int to_pad, int min_c, int zero);
+int		format_string(char *print, int to_pad, int min_c, int zero);
+int		null_string(char *print, int to_pad, int min_c);
+int		pad_left_s(char *print, int to_pad, int min_c);
+int		pad_right_s(char *print, int to_pad, int min_c, int zero);
 
 /* p */
 
-int ft_pad_right_nominc_p(int print, int to_pad, int min_c);
-int ft_pad_left_big_pad_p(int print, int to_pad, int min_c);
-int ft_pad_left_no_zero_p(int print, int to_pad, int min_c);
-int find_width_p(char *dir, int start, va_list args2);
-int format_address(long print, int to_pad, int min_c, int zero);
-int pad_left_p(long print, int to_pad, int min_c, int zero);
-int pad_right_p(long print, int to_pad, int min_c);
-void ft_put_address_up(long print, int min_c);
-void ft_put_address(long print);
-int ft_hexlen(long print);
-int ft_edge_cases_p(long print, int min_c);
-void ft_min_c(long print, int min_c, int len);
+int		ft_pad_right_nominc_p(long long print, int to_pad, int min_c);
+int		ft_pad_left_big_pad_p(long long print, int to_pad, int min_c);
+int		ft_pad_left_no_zero_p(long long print, int to_pad, int min_c);
+int		find_width_p(char *dir, int start, va_list args2);
+int		format_address(long long sprint, int to_pad, int min_c, int zero);
+int		pad_left_p(long long print, int to_pad, int min_c, int zero);
+int		pad_right_p(long long print, int to_pad, int min_c);
+void 	ft_put_address_up(long long print, int min_c);
+void	ft_put_address(long long print);
+int		ft_hexlen(long print);
+int		ft_edge_cases_p(long long print, int min_c);
+void	ft_min_c(long long print, int min_c, int len);
 
 /* u */
-
-int format_u(unsigned int print, int to_pad, int min_c,int zero);
-int ft_pad_left_len_u(int print, int to_pad, int min_c, int c);
-int ft_pad_right_u(int print, int to_pad, int min_c);
-void ft_putnbr_u_up(unsigned nb, int min_c);
+int		ft_pad_left_u(int print, int to_pad, int min_c, int zero);
+int		format_u(unsigned int print, int to_pad, int min_c,int zero);
+int		ft_pad_left_len_u(int print, int to_pad, int min_c, int c);
+int		ft_pad_right_u(int print, int to_pad, int min_c);
+void	ft_putnbr_u_up(unsigned nb, int min_c);
 
 /* x */
-int format_x(t_dir_variables var);
-void ft_put_x_up(long print, int min_c, int width);
+int		pad_right_x(t_dir_variables var);
+int		pad_left_x(t_dir_variables var);
+int		ft_pad_right_no_min_x(t_dir_variables var);
+int		ft_pad_right_not_zero_x(t_dir_variables var);
+int		ft_pad_right_zero_x(t_dir_variables var);
+int		ft_pad_right_x(t_dir_variables var, int size, int c);
+int		ft_pad_left_big_min(t_dir_variables var);
+int		ft_pad_left_big_pad(t_dir_variables var);
+int		ft_no_minc_no_zero_x(t_dir_variables var);
+int		ft_has_zero_x(t_dir_variables var);
+int		ft_no_minc_zero_x(t_dir_variables var);
+int		ft_pad_left_x(t_dir_variables var, int size,  int c);
+int		format_x(t_dir_variables var);
+void	ft_put_x_up(long print, int min_c, int width);
 
 /* X */
 
@@ -234,203 +247,73 @@ typedef char (*fptrdir)(char *dir, va_list args2, int flag);
 **  typedef void (*fptrconv)(char *input,  int index, int has_format, va_list args2);
 */
 
-int conv_itoa(char *input, int index, int has_format, va_list args2);
-int conv_dtoa(char *input, int index, int has_format, va_list args2);
-int conv_xtoa(char *input, int index, int has_format, va_list args2);
-int conv_Xtoa(char *input, int index, int has_format, va_list args2);
-int conv_uitoa(char *input, int index, int has_format, va_list args2);
-int conv_ftoa(char *input, int index, int has_format, va_list args2);
-int conv_fetoa(char *input, int index, int has_format, va_list args2);
-int conv_fetoa(char *input, int index, int has_format, va_list args2);
-int conv_dtoa(char *input, int index, int has_format, va_list args2);
-int print_str(char *input, int index, int has_format, va_list args2);
-int print_c(char *input, int index, int has_format, va_list args2);
-int conv_otoa(char *input, int index, int has_format, va_list args2);
-int print_ptr(char *input, int index, int has_format, va_list args2);
-int print_n(char *input, int index, int has_format, va_list args2);
-int print_percent(char *input, int index, int has_format, va_list args2);
+int		conv_itoa(char *input, int index, int has_format, va_list args2);
+int		conv_dtoa(char *input, int index, int has_format, va_list args2);
+int		conv_xtoa(char *input, int index, int has_format, va_list args2);
+int		conv_Xtoa(char *input, int index, int has_format, va_list args2);
+int		conv_uitoa(char *input, int index, int has_format, va_list args2);
+int		conv_ftoa(char *input, int index, int has_format, va_list args2);
+int		conv_fetoa(char *input, int index, int has_format, va_list args2);
+int		conv_fetoa(char *input, int index, int has_format, va_list args2);
+int		conv_dtoa(char *input, int index, int has_format, va_list args2);
+int		print_str(char *input, int index, int has_format, va_list args2);
+int		print_c(char *input, int index, int has_format, va_list args2);
+int		conv_otoa(char *input, int index, int has_format, va_list args2);
+int		print_ptr(char *input, int index, int has_format, va_list args2);
+int		print_n(char *input, int index, int has_format, va_list args2);
+int		print_percent(char *input, int index, int has_format, va_list args2);
 
 /*
-**  format directives func's_declared 
+**  other  func's_declared 
 */
 
-char put_star(char *dir, va_list args2, int flag);
-char put_position(char *dir, va_list args2, int flag);
-char put_sign(char *dir, va_list args2, int flag);
-char put_space(char *dir, va_list args2, int flag);
-char put_zeroes(char *dir, va_list args2, int flag);
-char put_len(char *dir, va_list args2, int flag);
-char put_dec_precision(char *dir, va_list args2, int flag);
-char put_alternate(char *dir, va_list args2, int flag);
-char put_field(char *dir, va_list args2, int flag);
 char has_formating(char *format, int n, va_list args2, int flag);
 int get_index(char *s1, char *s2);
-
-
-/*
-** micro_field_tools.c
-*/
-char put_spaces_before_s(char *x1, int converted, int len);
-char put_spaces_afer_s(char *x1, int converted, int len);
-char put_spaces_before_c(int x, int converted);
-char put_spaces_afer_c(int x, int converted);
-
-/*
-** field_tools.c
-*/
-char ft_copy(char *s1, char *s2);
-char ft_minor_field_star_fetch(va_list args2, int x, int converted);
-
-/*
-** field.c
-*/
-char field_c_combos(char *dir, va_list args2);
-char field_c(char *dir, va_list args2);
-char field_s(char *dir, va_list args2);
-char field_int_combos(char *dir, va_list args2);
-char field_u(char *dir, va_list args2);
-char field_u_combos(char *dir, va_list args2);
-char put_spaces_before_u(int x, int converted);
-char put_spaces_afer_u(int x, int converted);
-
-/*
-** star.c
-*/
-char star_s(char *dir, va_list args2);
-
-/*
-** micro_precision_tools.c
-*/
-char ft_micro_great_width_less_print(int width, int min_c, int print, int len);
-char ft_micro_great_width_great_len(int width, int min_c, int len);
-char ft_print_null(char *print, int width, int min_c);
-char ft_micro_same_len(char *print, int width, int min_c);
-char ft_wrong_directive(char *dir, char *print, int width, int min_c);
-char ft_micro_less_len(char *print, int width, int min_c);
-char ft_micro_less_width(char *print, int width, int min_c);
-/*
-** micro_precision__utools.c
-*/
-char ft_micro_great_width_less_print_u(int width, int min_c, int print, int len);
-char ft_micro_great_width_great_len_u(int width, int min_c, int len);
-char ft_print_null_u(char *print, int width, int min_c);
-char ft_micro_same_len_u(char *print, int width, int min_c);
-char ft_wrong_directive_u(char *dir, char *print, int width, int min_c);
-char ft_micro_less_len_u(char *print, int width, int min_c);
-char ft_micro_less_width_u(char *print, int width, int min_c);
-
-/*
-** precision_tools.c
-*/
-char zero_min_c(int len, int min_c, int width, int print);
-char minor_len(int len, int min_c, int width, int print);
-char greater_len(int len, int min_c, int width, int print);
-char precision_op(int len, int min_c, int width, int print);
-char zero_min_c_u(int len, int min_c, int width, int print);
-char minor_len_u(int len, int min_c, int width, int print);
-char greater_len_u(int len, int min_c, int width, int print);
-char precision_op_u(int len, int min_c, int width, int print);
-char zero_minus_star_dot_star_u(va_list args2);
-char zero_star_u(va_list args2);
-char zero_simple_star_u(va_list args2);
-
-/*
-** 		xX
-*/
-char put_spaces_before_x(long x, int converted);
-char put_spaces_afer_x(long x, int converted);
-char precision_op_x(int len, int min_c, int width, long print);
-char zero_min_c_x(int len, int min_c, int width, long print);
-char minor_len_x(int len, int min_c, int width, long print);
-char greater_len_x(int len, int min_c, int width, long print);
-char precision_op_x(int len, int min_c, int width, long print);
-char zero_minus_star_dot_star_x(va_list args2);
-char zero_star_x(va_list args2);
-char zero_simple_star_x(va_list args2);
-char field_x(char *dir, va_list args2, int flag);
-char field_x_combos(char *dir, va_list args2);
-char zero_int_combos(char *dir, va_list args2);
-int ft_xlen(long print);
-char precision_x_combos(char *dir, va_list args2, int flag);
-/*
-** micro_precision__utools.c
-*/
-char ft_micro_great_width_less_print_x(int width, int min_c, long print, int len);
-char ft_micro_great_width_great_len_x(int width, int min_c, long print, int len);
-char ft_print_null_x(char *print, int width, int min_c);
-char ft_micro_same_len_x(char *print, int width, int min_c);
-char ft_wrong_directive_x(char *dir, char *print, int width, int min_c);
-char ft_micro_less_len_x(char *print, int width, int min_c);
-char ft_micro_less_width_x(char *print, int width, int min_c);
-
-/*
-** precision.c
-*/
-char precision_s(char *dir, va_list args2);
-char precision_int(char *dir, va_list args2);
-char precision_int_combos(char *dir, va_list args2, int flag);
-char precision_u_combos(char *dir, va_list args2);
-char precision_u(char *dir, va_list args2);
-char precision_x(char *dir, va_list args2);
-
-/*
-** zero.c
-*/
-char zero_int_combos(char *dir, va_list args2);
-char zero_star_dot_star(va_list args2);
-char zero_star_dot_digi(va_list args2, char *to_convert);
-char zero_star_flag(va_list args2);
-char zero_2digi_dot_flag(va_list args2, char *to_convert);
-char zero_1digit_dot_flag(va_list args2, char *to_convert);
-char zero_u_combos(char *dir, va_list args2);
-char zero_star_dot_star_u(va_list args2);
-char zero_star_dot_digi_u(va_list args2, char *to_convert);
-char zero_star_flag_u(va_list args2);
-char zero_2digi_dot_flag_u(va_list args2, char *to_convert);
-char zero_1digit_dot_flag_u(va_list args2, char *to_convert);
 
 /*
 ** ft_general_utilities.c
 */
-void ft_putc(char c);
-void ft_putstr(char *str);
-char ft_putstr_limit(char *str, int limit);
-char *ft_strdup(const char *s1);
-int ft_intlen(int);
-int counter(int n);
-int ft_arglen(char *search);
-int ft_strlen(char *str);
-int ft_tolower(int c);
-int ft_toupper(int c);
-int ft_recursive_power(int nb, int power);
-char *ft_strchr(const char *s, int c);
-int ft_str_is_numeric(char *str);
-int ft_atoi(const char *str);
-char print_x_times(int n, char c);
-int loop_through(char *flags, char *format, int a);
-int ft_isalpha(int c);
-int ft_simple_atoi(const char *str);
-void *ft_memmove(void *dst, const void *src, size_t len);
-char *ft_strnew(size_t size);
-int arg_number(char *to_parse);
-int ft_intstrchr(char *s, int c, int start);
-int ft_putcharfrom(char *s, int start, char flag);
-int ft_intstrchr_flag(char *s, int c, int start);
-int find_first_flag(char *input);
-int print_the_middle(char *input, int flag1_end, char flag);
-int find_width(char *dir, int start, va_list args2);
-int ft_isdigit(int c);
-int ft_u_intlen(unsigned int n);
+void	ft_putc(char c);
+void	ft_putstr(char *str);
+char	ft_putstr_limit(char *str, int limit);
+char	*ft_strdup(const char *s1);
+int		ft_intlen(int);
+int		counter(int n);
+int		ft_arglen(char *search);
+int		ft_strlen(char *str);
+int		ft_tolower(int c);
+int		ft_toupper(int c);
+int		ft_recursive_power(int nb, int power);
+char	*ft_strchr(const char *s, int c);
+int		ft_str_is_numeric(char *str);
+int		ft_atoi(const char *str);
+char	print_x_times(int n, char c);
+int		loop_through(char *flags, char *format, int a);
+int		ft_isalpha(int c);
+int		ft_simple_atoi(const char *str);
+void	*ft_memmove(void *dst, const void *src, size_t len);
+char	*ft_strnew(size_t size);
+int		arg_number(char *to_parse);
+int		ft_intstrchr(char *s, int c, int start);
+int		ft_putcharfrom(char *s, int start, char flag);
+int		ft_intstrchr_flag(char *s, int c, int start);
+int		find_first_flag(char *input);
+int		print_the_middle(char *input, int flag1_end, char flag);
+int		find_width(char *dir, int start, va_list args2);
+
 
 /*
-** conv_numbers
+** conv_numbers & other number related utilities 
 */
-void ft_putnbr(int nb);
-char *ft_itoa(int n);
-void ft_putfloat(t_type type, va_list args2);
-void ft_putnbr_limit(int nb, int x);
-void ft_putnbr_u(unsigned int nb);
-void ft_put_x(long print, int flag);
+void	ft_putnbr(int nb);
+char	*ft_itoa(int n);
+void	ft_putfloat(t_type type, va_list args2);
+void	ft_putnbr_limit(int nb, int x);
+void	ft_putnbr_u(unsigned int nb);
+void	ft_put_x(long print, int flag);
+int		ft_isdigit(int c);
+int		ft_u_intlen(unsigned int n);
+int		ft_xlen(long print);
 
 /*
 ** parse_directives.c

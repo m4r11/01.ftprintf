@@ -6,7 +6,7 @@
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 11:54:44 by user              #+#    #+#             */
-/*   Updated: 2021/04/08 20:13:07 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/09 15:15:19 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,9 @@ int	print_c(char *input, int index, int has_format, va_list args2)
 	else
 	{
 		var.to_pad = find_width_c(input, index, args2);
-		var.min_c = find_precision(input, ft_intstrchr(input, '.', index), args2);
+		var.min = find_precision(input, ft_intstrchr(input, '.', index), args2);
 		var.q = va_arg(args2, int);
-		format_c(var.q, var.to_pad, var.min_c, var.has_zero);
+		format_c(var.q, var.to_pad, var.min, var.has_zero);
 		return (ft_intstrchr_flag(input, 'c', index));
 	}
 	return (FAIL);
