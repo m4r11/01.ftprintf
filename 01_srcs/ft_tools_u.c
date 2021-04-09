@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_u_tools.c                                 :+:      :+:    :+:   */
+/*   ft_tools_u.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <mvaldeta@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 23:51:46 by user              #+#    #+#             */
-/*   Updated: 2021/04/09 00:10:11 by user             ###   ########.fr       */
+/*   Updated: 2021/04/09 00:53:54 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,4 @@ int ft_pad_left_len_u(int print, int to_pad, int min_c, int c)
     print_x_times(to_pad, c);
     ft_putnbr_u_up(print, min_c);
     return (0);
-}
-
-int ft_edge_u(int min_c)
-{
-    char *uintmax;
-
-    uintmax = "4294967295";
-    if (min_c > 0)
-        print_x_times(min_c - ft_strlen(uintmax), '0');
-    ft_putstr(uintmax);
-    return(0);
 }
