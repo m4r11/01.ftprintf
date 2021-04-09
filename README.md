@@ -5,11 +5,11 @@ Now compiling with ```gcc main.c libftprintf.a debugs.a && ./a.out | cat -e``` p
 
 ## Implementation
 
-[Logic](https://github.com/m4r11/01.ftprintf/blob/23352de41d46add95eb997e10628fe988dac2b5f/03_media/printf_updated.jpg))
+![Logic](https://github.com/m4r11/01.ftprintf/blob/23352de41d46add95eb997e10628fe988dac2b5f/03_media/printf_updated.jpg)
 
 ## Subject
 
-[Subject](https://cdn.intra.42.fr/pdf/pdf/19313/en.subject.pdf)  
+![Subject](https://cdn.intra.42.fr/pdf/pdf/19313/en.subject.pdf)  
 
 ## Notes
 
@@ -17,10 +17,10 @@ Now compiling with ```gcc main.c libftprintf.a debugs.a && ./a.out | cat -e``` p
 
 ## Status
  
-[Status](https://github.com/m4r11/01.ftprintf/blob/0005f3fe8cef591496388e863ac6591987c81b23/03_media/Screen%20Shot%202021-04-09%20at%2000.27.48.png)
+![Status](https://github.com/m4r11/01.ftprintf/blob/0005f3fe8cef591496388e863ac6591987c81b23/03_media/Screen%20Shot%202021-04-09%20at%2000.27.48.png)
 
 ## Other Materials
 
-[Flag-directives](https://64.media.tumblr.com/8d93d56916dac5ccec257d6a2e62c7db/d2da620ab2e6d4ca-31/s1280x1920/9073ec368dcfc327b539e16fe0705215e72f6067.png)
+![Flag-directives](https://64.media.tumblr.com/8d93d56916dac5ccec257d6a2e62c7db/d2da620ab2e6d4ca-31/s1280x1920/9073ec368dcfc327b539e16fe0705215e72f6067.png)
 
 [Leaks tools | memwatch](https://github.com/shenyuflying/memwatch) 
