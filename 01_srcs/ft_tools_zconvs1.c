@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tools_zconvs.c                                  :+:      :+:    :+:   */
+/*   ft_tools_zconvs1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvaldeta <user@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 20:01:13 by mvaldeta          #+#    #+#             */
-/*   Updated: 2021/04/09 14:03:34 by mvaldeta         ###   ########.fr       */
+/*   Updated: 2021/04/15 21:33:53 by mvaldeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../00_includes/ft_printf.h"
 
 void ft_putnbr(int nb)
 {
-    //debug_number(nb, "nb");
     if (nb <= INT_MAX && nb >= INT_MIN)
     {
         if (nb == INT_MIN)
@@ -139,11 +138,11 @@ void ft_put_x(long print, int flag)
 
 void ft_put_x_up(long print, int min_c, int flag)
 {
-    long quotient;
-    long remainder;
-    char hexadecimal[20];
-    char *ulongmax;
-    int len;
+    long    quotient;
+    long    remainder;
+    char    hexadecimal[20];
+    char    *ulongmax;
+    int     len;
     int j = 0;
     if (print == (long)ULONG_MAX || print == (long)LONG_MIN)
     {
@@ -163,13 +162,6 @@ void ft_put_x_up(long print, int min_c, int flag)
             print_x_times(min_c - 1, '0');
         return;
     }
-    /*     if (print == 10)
-    {
-        if (min_c > 0 && print == 10)
-            print_x_times(min_c - 1, '0');
-        ft_putc('a');
-        return;
-    } */
     quotient = print;
     while (quotient != 0)
     {
